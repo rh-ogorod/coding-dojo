@@ -1,0 +1,48 @@
+---
+BasedOnStyle: Google
+Language: Cpp
+Standard: Latest
+ColumnLimit: 80
+# SpaceBeforeCpp11BracedList: true
+# Cpp11BracedListStyle: true
+# SpaceBeforeParens: Never
+# SpaceBeforeParens: ControlStatementsExceptControlMacros
+IndentWidth: 2
+# ContinuationIndentWidth: 2
+# ConstructorInitializerIndentWidth: 4
+SpacesBeforeTrailingComments: 1
+# SpacesInContainerLiterals: false
+BinPackParameters: false
+BinPackArguments: false
+AllowAllParametersOfDeclarationOnNextLine: false
+FixNamespaceComments: true
+BreakBeforeTernaryOperators: false
+# AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+# next ver AllowShortLambdasOnASingleLine: Empty
+# AllowShortIfStatementsOnASingleLine: false
+# AllowShortLoopsOnASingleLine: false
+AlignAfterOpenBracket: AlwaysBreak
+BreakConstructorInitializers: BeforeColon
+# next ver AllowAllConstructorInitializersOnNextLine: false
+AlwaysBreakBeforeMultilineStrings: true
+AllowShortLambdasOnASingleLine: Empty
+SeparateDefinitionBlocks: Always
+AlignTrailingComments: false
+# AlignOperands: DontAlign
+# IndentRequires: true
+
+# PenaltyBreakAssignment: 90
+# PenaltyBreakFirstLessLess: 0
+PenaltyBreakBeforeFirstCallParameter: 0
+PenaltyReturnTypeOnItsOwnLine: 190
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  BeforeCatch: true
+  BeforeElse: true
+  AfterFunction: false
+  AfterClass: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+...

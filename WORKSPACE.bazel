@@ -1,0 +1,29 @@
+# Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
+
+workspace(name = "diamond-dojo")
+
+local_repository(
+  name = "rules-compdb",
+  path = "external/bazelbuild-rules-compdb",
+)
+
+local_repository(
+  name = "cpp-utils",
+  path = "external/cpp-utils",
+)
+
+local_repository(
+  name = "range-v3",
+  path = "external/range-v3",
+)
+
+local_repository(
+  name = "boost",
+  path = "external/boost",
+)
+
+new_local_repository(
+  name = "system",
+  path = "/usr/lib/x86_64-linux-gnu",
+  build_file = "system.BUILD.bazel",
+)
