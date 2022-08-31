@@ -5,8 +5,8 @@ load("@rules-compdb//:defs.bzl", "compilation_database")
 compilation_database(
   name = "compdb",
   targets = [
-    "//packages/warp",
-    # "//packages/warp:warp_test",
+    "//packages/binary-gap",
+    # "//packages/warp:binary-gap-test",
   ],
   module_exts = ["cpp"],
 )

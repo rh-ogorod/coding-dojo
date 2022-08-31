@@ -21,6 +21,6 @@ CMD=(bazel)
 CMD+=("${BAZEL_RUN_CMD[@]}")
 CMD+=("${BAZEL_DEBUG_CMD[@]}")
 CMD+=("${BAZEL_TERM_CMD[@]}")
-CMD+=(//packages/warp:warp_test -- --log_level=all)
+CMD+=(//packages/warp:binary-gap-test -- --log_level=all)
 CMD+=('2>&1')
 echo + "${CMD[@]}" && eval "${CMD[@]}"

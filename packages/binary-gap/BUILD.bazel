@@ -3,7 +3,7 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_test")
 
 cc_binary(
-  name = "warp",
+  name = "binary-gap",
   srcs = [
     "src/main.hpp",
     "src/main.cpp",
@@ -19,7 +19,7 @@ cc_binary(
 )
 
 cc_test(
-  name = "warp_test",
+  name = "binary-gap-test",
   srcs = [
     "src/main.hpp",
     "src/main.test.cpp",
