@@ -14,11 +14,11 @@ inline auto solution(int N) -> int {
   int binaryGap = 0;
   int currentGap = 0;
   bool gapTrack = false;
-  const uint_fast32_t unn = N;
+  const uint_fast32_t un = N;
   uint_fast32_t mask = 1;
 
   for (int i = 0; i < binaryWidth; ++i) {
-    if ((unn & mask) != 0) {
+    if ((un & mask) != 0) {
       if (gapTrack) {
         if (currentGap > binaryGap) {
           binaryGap = currentGap;
