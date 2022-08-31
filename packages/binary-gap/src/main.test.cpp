@@ -7,7 +7,7 @@
 
 // NOLINTNEXTLINE
 BOOST_AUTO_TEST_CASE(warp_test) {
-  BOOST_REQUIRE_EQUAL(warp(), 42);
+  BOOST_REQUIRE_EQUAL(solution(10), 42);
 }
 
 // #include <cassert>

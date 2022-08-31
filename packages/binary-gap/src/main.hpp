@@ -2,7 +2,8 @@
 #ifndef __main_hpp__
 #define __main_hpp__
 
-inline auto warp() -> int {
+inline auto solution(int N) -> int {
   return 42;
 }
+
 #endif // __main_hpp__

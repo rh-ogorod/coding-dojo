@@ -5,7 +5,8 @@
 #include <iostream>
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
-  std::cout << "The life, the universe and everything: " << warp() << "\n";
+  std::cout << "The life, the universe and everything: " << solution(10)
+            << "\n";
 
   return 0;
 }
