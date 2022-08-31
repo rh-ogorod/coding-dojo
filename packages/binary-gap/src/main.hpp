@@ -30,7 +30,7 @@ inline auto solution(int N) -> int {
       }
     }
     else if (gapTrack) {
-      currentGap += 1;
+      ++currentGap;
     }
 
     mask <<= 1U;
