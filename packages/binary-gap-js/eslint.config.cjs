@@ -13,4 +13,11 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-console': 'off',
   },
+  overrides: [
+    ...config.overrides,
+    {
+      files: ['*.js', '*.jsx'],
+      rules: { 'import/extensions': ['error', 'ignorePackages'] },
+    },
+  ],
 };
