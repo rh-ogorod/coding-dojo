@@ -2,11 +2,11 @@
 
 #include "main.hpp"
 
-#define BOOST_TEST_MODULE SolutionTest
+#define BOOST_TEST_MODULE BinaryGap
 #include <boost/test/unit_test.hpp>
 
 // NOLINTNEXTLINE
-BOOST_AUTO_TEST_CASE(solution_test) {
+BOOST_AUTO_TEST_CASE(binary_gap) {
   BOOST_REQUIRE_EQUAL(solution(9), 2); // 1001
   BOOST_REQUIRE_EQUAL(solution(529), 4); // 1000010001
   BOOST_REQUIRE_EQUAL(solution(20), 1); // 10100
