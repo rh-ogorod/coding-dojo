@@ -1,21 +1,24 @@
 {
-  "name": "@rh-ogorod/bazelbuild-rules_compdb",
+  "name": "@codility-dojo/binary-gap-js",
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "lint": "eslint -c eslint.config.js --ext .js . ; echo '' ; tsc"
+    "lint": "eslint -c eslint.config.js --ext .js . ; echo '' ; tsc",
+    "test": "mocha"
   },
+  "bin": {
+    "start": "src/start"
+  },
+  "type": "module",
   "keywords": [],
   "author": "Victor Rybynok",
   "license": "GPL-3.0",
   "eslintConfig": {
-    "extends": "./eslint.config.js"
-  },
-  "dependencies": {
-    "optimist": "^0.6.1"
+    "extends": "./eslint.config.cjs"
   },
   "devDependencies": {
     "@rh-ogorod/js-configs": "workspace:*",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^16.11.45",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
@@ -27,6 +30,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "mocha": "^10.0.0",
     "typescript": "^4.7.4"
   }
 }

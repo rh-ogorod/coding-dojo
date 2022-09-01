@@ -1,8 +1,10 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
 
-import 'reflect-metadata';
+import { solution } from './main.js';
 
-import '~/lib/dotenv';
-import main from '~/lib/main';
-
-main();
+/**
+ * @returns {Promise<void>}
+ */
+(async () => {
+  console.log(solution(10));
+})();

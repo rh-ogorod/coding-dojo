@@ -1,10 +1,10 @@
 {
-  "name": "gcc-bazel-init",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "workspaces": [
     "external/bazelbuild-rules-compdb",
-    "external/js-configs"
+    "external/js-configs",
+    "packages/binary-gap-js"
   ],
   "scripts": {
     "app:build": "yarn workspaces foreach --verbose --parallel --topological-dev run build",

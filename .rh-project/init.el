@@ -153,8 +153,10 @@
 
          ((or (setq
                ext-js
-               (string-match-p "\\.ts\\'\\|\\.tsx\\'\\|\\.js\\'\\|\\.jsx\\'"
-                               file-rpath))
+               (string-match-p
+                (concat "\\.ts\\'\\|\\.tsx\\'\\|\\.js\\'\\|\\.jsx\\'"
+                        "\\|\\.cjs\\'\\|\\.mjs\\'")
+                file-rpath))
               (string-match-p "^#!.*node"
                               (or (save-excursion
                                     (goto-char (point-min))
