@@ -60,9 +60,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codility-dojo/binary-gap-js@workspace:packages/binary-gap-js":
+"@codility-dojo/binary-gap-js@workspace:packages/binary-gap/nodejs":
   version: 0.0.0-use.local
-  resolution: "@codility-dojo/binary-gap-js@workspace:packages/binary-gap-js"
+  resolution: "@codility-dojo/binary-gap-js@workspace:packages/binary-gap/nodejs"
   dependencies:
     "@rh-ogorod/js-configs": "workspace:*"
     "@types/mocha": ^9.1.1

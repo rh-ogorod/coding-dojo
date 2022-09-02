@@ -14,13 +14,11 @@ source "${SDPATH}/conf.sh"
 
 cd "${PRJ_ROOT_PATH}"; echo cd "${PWD}"
 
-# export BOOST_TEST_LOG_LEVEL=all
-
 echo
 CMD=(bazel)
 CMD+=("${BAZEL_RUN_CMD[@]}")
 CMD+=("${BAZEL_DEBUG_CMD[@]}")
 CMD+=("${BAZEL_TERM_CMD[@]}")
-CMD+=(//packages/binary-gap-cpp14:binary-gap-cpp14-test -- --log_level=all)
+CMD+=(//packages/binary-gap/cpp20:binary-gap-cpp20)
 CMD+=('2>&1')
 echo + "${CMD[@]}" && eval "${CMD[@]}"

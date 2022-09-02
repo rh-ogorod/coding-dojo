@@ -5,8 +5,8 @@ load("@rules-compdb//:defs.bzl", "compilation_database")
 compilation_database(
   name = "compdb",
   targets = [
-    "//packages/binary-gap-cpp14",
-    # "//packages/binary-gap-cpp14:binary-gap-cpp14-test",
+    "//packages/binary-gap/cpp20:binary-gap-cpp20",
+    # "//packages/binary-gap/cpp20:binary-gap-cpp20-test",
   ],
   module_exts = ["cpp"],
 )

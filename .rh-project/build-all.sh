@@ -14,5 +14,5 @@ CMD=(./build-pre-bazel.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(./build-binary-gap-cpp14.sh)
+CMD=(./build-binary-gap-cpp20.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
