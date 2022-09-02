@@ -80,6 +80,7 @@ __metadata:
     mocha: ^10.0.0
     typescript: ^4.7.4
   bin:
+    perf: src/perf
     start: src/start
   languageName: unknown
   linkType: soft

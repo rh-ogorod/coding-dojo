@@ -7,6 +7,7 @@
     "test": "mocha"
   },
   "bin": {
+    "perf": "src/perf",
     "start": "src/start"
   },
   "type": "module",
