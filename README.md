@@ -1,4 +1,4 @@
-# Codding Dojo
+# Coding Dojo
 
 ## Tasks sources and inspirations
 * [cyber-dojo](https://cyber-dojo.org/creator/home)
