@@ -1,4 +1,4 @@
-# Binary Gap Node.js Implementation
+# Binary Gap in Node.js
 
 [BinaryGap](https://app.codility.com/programmers/trainings/9/binary_gap/)
 
