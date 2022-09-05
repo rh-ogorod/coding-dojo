@@ -5,8 +5,9 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_test")
 cc_binary(
   name = "binary-gap-cpp20",
   srcs = [
-    "src/main.hpp",
+    "src/binary_form.hpp",
     "src/main.cpp",
+    "src/main.hpp",
   ],
   deps = [
     "@cpp-utils//:cpp-utils",
@@ -23,6 +24,23 @@ cc_test(
   srcs = [
     "src/main.hpp",
     "src/main.test.cpp",
+  ],
+  deps = [
+    "@cpp-utils//:cpp-utils",
+    "@range-v3//:range-v3",
+    "@boost//:boost",
+    "@system//:system",
+  ],
+  # linkopts = ['-Wl,-rpath,"$$ORIGIN/../lib"'],
+  visibility = ["//visibility:public"],
+)
+
+cc_binary(
+  name = "binary-gap-cpp20-perf",
+  srcs = [
+    "src/binary_form.hpp",
+    "src/main.hpp",
+    "src/perf.cpp",
   ],
   deps = [
     "@cpp-utils//:cpp-utils",

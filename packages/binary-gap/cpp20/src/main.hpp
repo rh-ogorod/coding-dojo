@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <limits>
 
-inline auto solution(int N) -> int {
+inline auto solution(int32_t N) -> int32_t {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
   assert(N >= 1 && N <= 2'147'483'647);
   constexpr int binaryWidth = 31;

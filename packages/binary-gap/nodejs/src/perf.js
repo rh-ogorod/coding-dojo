@@ -17,14 +17,17 @@ const CYCLES_COUNT = 1_000_000;
 
   nums.forEach((N) => {
     const start = performance.now();
+
     binaryGap = solution(N);
-    const duration = performance.now() - start;
+
+    const finish = performance.now();
+    const duration = finish - start;
     durationAvg += duration;
   });
 
   durationAvg /= CYCLES_COUNT;
 
   console.log(
-    `Binary gap solution() exec duration: ${durationAvg * 10 ** 3} ns`,
+    `Binary gap solution() exec duration: ${durationAvg * 10 ** 6} ns`,
   );
 })();
