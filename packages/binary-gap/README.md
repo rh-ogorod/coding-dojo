@@ -1,4 +1,4 @@
-# Binary Gap Dojo
+# Binary Gap Kata
 
 [BinaryGap](https://app.codility.com/programmers/trainings/9/binary_gap/)
 

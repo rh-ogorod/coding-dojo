@@ -1,3 +1,5 @@
-# Codility Dojo
+# Coding Dojo
 
-[Codility](https://app.codility.com/programmers/trainings/)
+## Tasks sources and inspirations
+* [cyber-dojo](https://cyber-dojo.org/creator/home)
+* [Codility](https://app.codility.com/programmers/trainings/)
