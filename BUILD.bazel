@@ -6,6 +6,7 @@ compilation_database(
   name = "compdb",
   targets = [
     "//packages/binary-gap/cpp20:binary-gap-cpp20",
+    "//packages/binary-gap/cpp20:binary-gap-cpp20-perf",
     # "//packages/binary-gap/cpp20:binary-gap-cpp20-test",
   ],
   module_exts = ["cpp"],
