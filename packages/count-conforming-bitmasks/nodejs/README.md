@@ -1,7 +1,7 @@
-# Count Conforming Bitmasks C++20
+# Count Conforming Bitmasks in Node.js
 
 [BinaryGap](https://app.codility.com/programmers/trainings/9/count_conforming_bitmasks/)
 
-```C++
-int solution(int N);
+```JavaScript
+function solution(N);
 ```

@@ -15,9 +15,9 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
   assert(A >= 0 && C <= 1'073'741'823);
   constexpr int binaryWidth = 30;
 
-  uint_fast32_t ua = A;
-  uint_fast32_t ub = B;
-  uint_fast32_t uc = C;
+  const uint_fast32_t ua = A;
+  const uint_fast32_t ub = B;
+  const uint_fast32_t uc = C;
 
   uint_fast8_t az = 0;
   uint_fast8_t bz = 0;
@@ -57,13 +57,13 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
     mask <<= 1U;
   }
 
-  uint_fast32_t powAz = (1U << az);
-  uint_fast32_t powBz = (1U << bz);
-  uint_fast32_t powCz = (1U << cz);
+  const uint_fast32_t powAz = (1U << az);
+  const uint_fast32_t powBz = (1U << bz);
+  const uint_fast32_t powCz = (1U << cz);
 
-  uint_fast32_t powAbz = abz > 0 ? (1U << abz) : 0;
-  uint_fast32_t powBcz = bcz > 0 ? (1U << bcz) : 0;
-  uint_fast32_t powAcz = acz > 0 ? (1U << acz) : 0;
+  const uint_fast32_t powAbz = abz > 0 ? (1U << abz) : 0;
+  const uint_fast32_t powBcz = bcz > 0 ? (1U << bcz) : 0;
+  const uint_fast32_t powAcz = acz > 0 ? (1U << acz) : 0;
 
   return powAz + powBz + powCz - powAbz - powBcz - powAcz;
 }
