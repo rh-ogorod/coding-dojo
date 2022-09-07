@@ -65,11 +65,53 @@ export const solution = (A, B, C) => {
   return solutionInputArray([A, B, C]);
 };
 
-const inputs = /** @type {const} */ ([
-  0b11_1111_1111_1111_1111_1111_1001_1111,
-  0b11_1111_1111_1111_1111_1111_0011_1111,
-  0b11_1111_1111_1111_1111_1111_0110_1111,
-]);
+const test0 = () => {
+  const inputInts = /** @type {const} */ ([
+    0b11_1111_1111_1111_1111_1111_1001_1111,
+    0b11_1111_1111_1111_1111_1111_0011_1111,
+    0b11_1111_1111_1111_1111_1111_0110_1111,
+  ]);
 
-console.log(`inputs = ${inputs}`);
-console.log('conforming ints =', solution(...inputs));
+  const conformingInts = solution(...inputInts);
+  const conformingIntsCount = conformingInts.length;
+
+  console.log(
+    'inputs =',
+    inputInts.map((inputInt) => inputInt.toString(2)),
+  );
+
+  console.log(
+    'conforming ints =',
+    conformingInts.map((conformingInt) => conformingInt.toString(2)),
+  );
+
+  console.log('conforming ints count =', conformingIntsCount);
+  console.log();
+};
+
+const test1 = () => {
+  const inputInts = /** @type {const} */ ([
+    0b11_1111_1111_1111_1111_1011_1001_1111,
+    0b11_1111_1111_1111_1101_1001_0011_1111,
+    0b11_1111_1111_1111_1111_1111_0110_1111,
+  ]);
+
+  const conformingInts = solution(...inputInts);
+  const conformingIntsCount = conformingInts.length;
+
+  console.log(
+    'inputs =',
+    inputInts.map((inputInt) => inputInt.toString(2)),
+  );
+
+  console.log(
+    'conforming ints =',
+    conformingInts.map((conformingInt) => conformingInt.toString(2)),
+  );
+
+  console.log('conforming ints count =', conformingIntsCount);
+  console.log();
+};
+
+test0();
+test1();
