@@ -3,6 +3,41 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-plusplus */
 
+class SuperSet {
+  constructor() {
+    /** @type {Array<Set<number>>} */
+    this.sets = [new Set()];
+  }
+
+  /**
+   * @param {number}  v
+   * @returns {Set<number>}
+   */
+  add(v) {
+    if (this.sets[this.sets.length - 1].size === 16777000) {
+      this.sets.push(new Set());
+    }
+
+    return this.sets[this.sets.length - 1].add(v);
+  }
+
+  *[Symbol.iterator]() {
+    for (const set of this.sets) {
+      const vs = set.values();
+      for (const v of vs) {
+        yield v;
+      }
+    }
+  }
+
+  // has(v: string) {
+  //   for (const set of this.sets) {
+  //     if (set.has(v)) return true;
+  //   }
+  //   return false;
+  // }
+}
+
 /**
  * @param {number[]}  inputs
  * @returns {number[]}
@@ -30,8 +65,8 @@ const solutionInputArray = (inputs) => {
     }
   });
 
-  /** @type {Set<number>} */
-  const conformingInts = new Set();
+  /** @type {SuperSet} */
+  const conformingInts = new SuperSet();
 
   zeroLocationsPerInput.forEach((zeroLocations, inputIndex) => {
     const extensionWidth = zeroLocations.length;
@@ -48,7 +83,12 @@ const solutionInputArray = (inputs) => {
         }
       }
 
-      conformingInts.add(conformingInt);
+      try {
+        conformingInts.add(conformingInt);
+      } catch (e) {
+        console.log(conformingInt.toString(2));
+        throw e;
+      }
     }
   });
 
@@ -113,5 +153,30 @@ const test1 = () => {
   console.log();
 };
 
+const test2 = () => {
+  const inputInts = /** @type {const} */ ([
+    0b11_0000_0000_0000_0000_0000_0000_0000,
+    0b11_0000_0000_0000_0000_0000_0000_0000,
+    0b11_0000_0000_0000_0000_0000_0000_0000,
+  ]);
+
+  const conformingInts = solution(...inputInts);
+  const conformingIntsCount = conformingInts.length;
+
+  console.log(
+    'inputs =',
+    inputInts.map((inputInt) => inputInt.toString(2)),
+  );
+
+  // console.log(
+  //   'conforming ints =',
+  //   conformingInts.map((conformingInt) => conformingInt.toString(2)),
+  // );
+
+  console.log('conforming ints count =', conformingIntsCount);
+  console.log();
+};
+
 test0();
 test1();
+test2();
