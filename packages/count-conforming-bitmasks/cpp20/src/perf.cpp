@@ -1,5 +1,6 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
 
+#include <array>
 #include <chrono>
 #include <cstdint>
 #include <iomanip>
@@ -18,40 +19,33 @@ constexpr auto CYCLES_COUNT = 1'000'000;
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::random_device device;
   std::default_random_engine engine{device()};
-  std::uniform_int_distribution<int32_t> distribution{1, 2'147'483'647};
+  std::uniform_int_distribution<int32_t> distribution{0, 1'073'741'823};
 
   auto indices = views::iota(0) | views::take(CYCLES_COUNT);
-  auto numsView = views::transform(indices, [&](auto /*i*/) {
-    return distribution(engine);
+  auto inputsView = views::transform(indices, [&](auto /*i*/) {
+    return std::array{
+        distribution(engine), distribution(engine), distribution(engine)};
   });
 
-  int32_t binaryGap;
+  int32_t conformingIntsCount{0};
   double durationAvgNanoSecond{0};
 
-  ranges::for_each(numsView, [&binaryGap, &durationAvgNanoSecond](int32_t num) {
-    const auto start = std::chrono::high_resolution_clock::now();
+  ranges::for_each(
+      inputsView, [&conformingIntsCount, &durationAvgNanoSecond](auto input) {
+        const auto start = std::chrono::high_resolution_clock::now();
 
-    binaryGap = solution(num);
+        conformingIntsCount = solution(input[0], input[1], input[2]);
 
-    const auto finish = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double, std::nano> duration = finish - start;
-    durationAvgNanoSecond += duration.count();
-  });
+        const auto finish = std::chrono::high_resolution_clock::now();
+        const std::chrono::duration<double, std::nano> duration =
+            finish - start;
+        durationAvgNanoSecond += duration.count();
+      });
 
   durationAvgNanoSecond /= CYCLES_COUNT;
 
-  std::cout << "Binary gap solution() exec duration: " << std::setprecision(4)
-            << durationAvgNanoSecond << " ns\n";
-
-  // std::cout << "Binary gap random samples:\n";
-  // ranges::for_each(numsView, [](int32_t num) {
-  //   std::cout << BinaryForm{num} << " -> " << solution(num) << "\n";
-  // });
-
-  // std::cout << "Binary gap random samples:\n";
-  // for (const auto num : nums) {
-  //   std::cout << BinaryForm{num} << " -> " << solution(num) << "\n";
-  // }
+  std::cout << "Count Conforming Bitmasks solution() exec duration: "
+            << std::setprecision(4) << durationAvgNanoSecond << " ns\n";
 
   return 0;
 }

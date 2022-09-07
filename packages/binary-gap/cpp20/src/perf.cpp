@@ -25,7 +25,7 @@ auto main(int /*argc*/, char* /*argv*/[]) -> int {
     return distribution(engine);
   });
 
-  int32_t binaryGap;
+  int32_t binaryGap{0};
   double durationAvgNanoSecond{0};
 
   ranges::for_each(numsView, [&binaryGap, &durationAvgNanoSecond](int32_t num) {
