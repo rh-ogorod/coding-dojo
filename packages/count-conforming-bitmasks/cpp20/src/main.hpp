@@ -70,25 +70,25 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
 
   const uint_fast32_t powAbcz = 1U << abcz;
 
-  // std::cout << "======== debugging metrics\n";
+  std::cout << "======== debugging metrics\n";
 
-  // std::cout << "az " << az << "\n";
-  // std::cout << "bz " << bz << "\n";
-  // std::cout << "cz " << cz << "\n";
-  // std::cout << "abz " << abz << "\n";
-  // std::cout << "bcz " << bcz << "\n";
-  // std::cout << "acz " << acz << "\n";
-  // std::cout << "abcz " << abcz << "\n";
+  std::cout << "az " << az << "\n";
+  std::cout << "bz " << bz << "\n";
+  std::cout << "cz " << cz << "\n";
+  std::cout << "abz " << abz << "\n";
+  std::cout << "bcz " << bcz << "\n";
+  std::cout << "acz " << acz << "\n";
+  std::cout << "abcz " << abcz << "\n";
 
-  // std::cout << "~~~~~~~~\n";
+  std::cout << "~~~~~~~~\n";
 
-  // std::cout << "powAz " << powAz << "\n";
-  // std::cout << "powBz " << powBz << "\n";
-  // std::cout << "powCz " << powCz << "\n";
-  // std::cout << "powAbz " << powAbz << "\n";
-  // std::cout << "powBcz " << powBcz << "\n";
-  // std::cout << "powAcz " << powAcz << "\n";
-  // std::cout << "powAbcz " << powAbcz << "\n";
+  std::cout << "powAz " << powAz << "\n";
+  std::cout << "powBz " << powBz << "\n";
+  std::cout << "powCz " << powCz << "\n";
+  std::cout << "powAbz " << powAbz << "\n";
+  std::cout << "powBcz " << powBcz << "\n";
+  std::cout << "powAcz " << powAcz << "\n";
+  std::cout << "powAbcz " << powAbcz << "\n";
 
   const uint_fast32_t abUnique = powAbz - powAbcz;
   const uint_fast32_t bcUnique = powBcz - powAbcz;
