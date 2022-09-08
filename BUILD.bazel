@@ -8,6 +8,8 @@ compilation_database(
     "//packages/binary-gap/cpp20:binary-gap-cpp20",
     "//packages/binary-gap/cpp20:binary-gap-cpp20-perf",
     # "//packages/binary-gap/cpp20:binary-gap-cpp20-test",
+    # "//packages/binary-gap/cpp20:binary-gap-cpp20",
+    # "//packages/binary-gap/cpp20:binary-gap-cpp20-perf",
   ],
   module_exts = ["cpp"],
 )

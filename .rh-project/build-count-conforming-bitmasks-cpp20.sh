@@ -18,4 +18,5 @@ CMD+=("${BAZEL_BUILD_CMD[@]}")
 CMD+=("${BAZEL_DEBUG_CMD[@]}")
 CMD+=("${BAZEL_TERM_CMD[@]}")
 CMD+=(//packages/count-conforming-bitmasks/cpp20:main)
+# CMD+=(//packages/count-conforming-bitmasks/cpp20:force)
 echo + "${CMD[@]}" && "${CMD[@]}"
