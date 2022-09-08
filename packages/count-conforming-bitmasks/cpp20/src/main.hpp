@@ -16,21 +16,21 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
   assert(A >= 0 && C <= 1'073'741'823);
   constexpr int binaryWidth = 30;
 
-  const uint_fast32_t ua = A;
-  const uint_fast32_t ub = B;
-  const uint_fast32_t uc = C;
+  const int_fast32_t ua = A;
+  const int_fast32_t ub = B;
+  const int_fast32_t uc = C;
 
-  uint_fast8_t az = 0;
-  uint_fast8_t bz = 0;
-  uint_fast8_t cz = 0;
+  int az = 0;
+  int bz = 0;
+  int cz = 0;
 
-  uint_fast8_t abz = 0;
-  uint_fast8_t bcz = 0;
-  uint_fast8_t acz = 0;
+  int abz = 0;
+  int bcz = 0;
+  int acz = 0;
 
-  uint_fast8_t abcz = 0;
+  int abcz = 0;
 
-  uint_fast32_t mask = 1;
+  int_fast32_t mask = 1;
 
   for (int i = 0; i < binaryWidth; ++i) {
     if (((ua & mask) == 0) && ((ub & mask) == 0) && ((uc & mask) == 0)) {
@@ -58,29 +58,48 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
       cz += 1;
     }
 
-    mask <<= 1U;
+    mask <<= 1;
   }
 
-  std::cout << "abcz " << +abcz << "\n";
-  std::cout << "abz " << +abz << "\n";
-  std::cout << "bcz " << +bcz << "\n";
-  std::cout << "acz " << +acz << "\n";
+  const int_fast32_t powAz = (1 << az) - 1;
+  const int_fast32_t powBz = (1 << bz) - 1;
+  const int_fast32_t powCz = (1 << cz) - 1;
+
+  const int_fast32_t powAbz = (1 << abz) - 1;
+  const int_fast32_t powBcz = (1 << bcz) - 1;
+  const int_fast32_t powAcz = (1 << acz) - 1;
+
+  const int_fast32_t powAbcz = (1 << abcz) - 1;
+
   std::cout << "az " << +az << "\n";
   std::cout << "bz " << +bz << "\n";
   std::cout << "cz " << +cz << "\n";
+  std::cout << "abz " << +abz << "\n";
+  std::cout << "bcz " << +bcz << "\n";
+  std::cout << "acz " << +acz << "\n";
+  std::cout << "abcz " << +abcz << "\n";
 
-  const uint_fast32_t powAz = 1U << az;
-  const uint_fast32_t powBz = 1U << bz;
-  const uint_fast32_t powCz = 1U << cz;
+  std::cout << "~~~~~~~~\n";
 
-  const uint_fast32_t powAbz = (1U << abz) - 1;
-  const uint_fast32_t powBcz = (1U << bcz) - 1;
-  const uint_fast32_t powAcz = (1U << acz) - 1;
+  std::cout << "powAz " << powAz << "\n";
+  std::cout << "powBz " << powBz << "\n";
+  std::cout << "powCz " << powCz << "\n";
+  std::cout << "powAbz " << powAbz << "\n";
+  std::cout << "powBcz " << powBcz << "\n";
+  std::cout << "powAcz " << powAcz << "\n";
+  std::cout << "powAbcz " << powAbcz << "\n";
 
-  // const uint_fast32_t powAbcz = 1U << (abcz + 1U);
-  const uint_fast32_t powAbcz = ((1U << abcz) - 1) * 4;
+  // const int_fast32_t powAbcz = 1 << (abcz + 1);
+  // const int_fast32_t powAbcz = ((1 << abcz) - 1) * 4;
 
-  return powAz + powBz + powCz - powAbz - powBcz - powAcz - powAbcz - 2;
+  // return powAz + powBz + powCz - powAbz - powBcz - powAcz - powAbcz - 2;
+
+  const int_fast32_t aConf = powAz;
+  const int_fast32_t bConf = powBz - powAbz - powAbcz * (abz + bcz + acz);
+  const int_fast32_t cConf =
+      powCz - powAcz - powBcz - powAbcz * (abz + bcz + acz);
+
+  return aConf + bConf + cConf + 1;
 }
 
 #endif // __count_conforming_bitmasks_hpp__
