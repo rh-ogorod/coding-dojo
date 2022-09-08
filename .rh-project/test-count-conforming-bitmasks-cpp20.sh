@@ -22,5 +22,6 @@ CMD+=("${BAZEL_RUN_CMD[@]}")
 CMD+=("${BAZEL_DEBUG_CMD[@]}")
 CMD+=("${BAZEL_TERM_CMD[@]}")
 CMD+=(//packages/count-conforming-bitmasks/cpp20:test -- --log_level=all)
+# CMD+=(//packages/count-conforming-bitmasks/cpp20:force-main-test -- --log_level=all)
 CMD+=('2>&1')
 echo + "${CMD[@]}" && eval "${CMD[@]}"

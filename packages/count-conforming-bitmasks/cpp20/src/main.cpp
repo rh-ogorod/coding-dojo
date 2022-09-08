@@ -1,13 +1,13 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
 
-// #include "main.hpp"
+#include "main.hpp"
+
 #include <bitset>
 #include <climits>
 #include <cstdint>
 #include <iostream>
 
 #include "binary_form.hpp"
-#include "main_force.hpp"
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   constexpr std::int32_t A = 0b11'1111'1111'1111'1111'1111'1001'1111;
