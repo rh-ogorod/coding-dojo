@@ -60,15 +60,15 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
     mask <<= 1U;
   }
 
-  const uint_fast32_t powAz = (1U << az);
-  const uint_fast32_t powBz = (1U << bz);
-  const uint_fast32_t powCz = (1U << cz);
+  const uint_fast32_t powAz = 1U << az;
+  const uint_fast32_t powBz = 1U << bz;
+  const uint_fast32_t powCz = 1U << cz;
 
-  const uint_fast32_t powAbz = (1U << abz);
-  const uint_fast32_t powBcz = (1U << bcz);
-  const uint_fast32_t powAcz = (1U << acz);
+  const uint_fast32_t powAbz = 1U << abz;
+  const uint_fast32_t powBcz = 1U << bcz;
+  const uint_fast32_t powAcz = 1U << acz;
 
-  const uint_fast32_t powAbcz = (1U << abcz);
+  const uint_fast32_t powAbcz = 1U << abcz;
 
   // std::cout << "======== debugging metrics\n";
 
