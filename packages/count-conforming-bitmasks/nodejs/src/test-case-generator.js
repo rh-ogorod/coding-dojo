@@ -29,13 +29,6 @@ class SuperSet {
       }
     }
   }
-
-  // has(v: string) {
-  //   for (const set of this.sets) {
-  //     if (set.has(v)) return true;
-  //   }
-  //   return false;
-  // }
 }
 
 /**
@@ -107,9 +100,9 @@ export const solution = (A, B, C) => {
 
 const test0 = () => {
   const inputInts = /** @type {const} */ ([
-    0b11_1111_1111_1111_1111_1111_1001_1111,
-    0b11_1111_1111_1111_1111_1111_0011_1111,
-    0b11_1111_1111_1111_1111_1111_0110_1111,
+    0b11_1111_1111_1111_1111_1111_1001_1110,
+    0b11_1111_1111_1111_1111_1111_0011_1110,
+    0b11_1111_1111_1111_1111_1111_0110_1110,
   ]);
 
   const conformingInts = solution(...inputInts);
@@ -155,9 +148,57 @@ const test1 = () => {
 
 const test2 = () => {
   const inputInts = /** @type {const} */ ([
-    0b11_0000_0000_0000_0000_0000_0000_0000,
-    0b11_0000_0000_0000_0000_0000_0000_0000,
-    0b11_0000_0000_0000_0000_0000_0000_0000,
+    0b11_1111_0000_0000_0000_0000_0011_1111,
+    0b11_1111_0000_0000_0000_0000_0011_1111,
+    0b11_1111_0000_0000_0000_0000_0011_1111,
+  ]);
+
+  const conformingInts = solution(...inputInts);
+  const conformingIntsCount = conformingInts.length;
+
+  console.log(
+    'inputs =',
+    inputInts.map((inputInt) => inputInt.toString(2)),
+  );
+
+  // console.log(
+  //   'conforming ints =',
+  //   conformingInts.map((conformingInt) => conformingInt.toString(2)),
+  // );
+
+  console.log('conforming ints count =', conformingIntsCount);
+  console.log();
+};
+
+const test3 = () => {
+  const inputInts = /** @type {const} */ ([
+    0b10_1010_1010_1010_1010_1010_1010_1010,
+    0b01_0101_0101_0101_0101_0101_0101_0100,
+    0b10_1010_1010_1010_1010_1010_1010_1010,
+  ]);
+
+  const conformingInts = solution(...inputInts);
+  const conformingIntsCount = conformingInts.length;
+
+  console.log(
+    'inputs =',
+    inputInts.map((inputInt) => inputInt.toString(2)),
+  );
+
+  // console.log(
+  //   'conforming ints =',
+  //   conformingInts.map((conformingInt) => conformingInt.toString(2)),
+  // );
+
+  console.log('conforming ints count =', conformingIntsCount);
+  console.log();
+};
+
+const test4 = () => {
+  const inputInts = /** @type {const} */ ([
+    0b11_1111_0000_0000_0000_0000_0000_0000,
+    0b11_1111_0000_0000_0000_0000_0000_0000,
+    0b11_1111_0000_0000_0000_0000_0000_0000,
   ]);
 
   const conformingInts = solution(...inputInts);
@@ -180,3 +221,4 @@ const test2 = () => {
 test0();
 test1();
 test2();
+test3();
