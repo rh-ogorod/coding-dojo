@@ -8,6 +8,7 @@ cc_binary(
     "src/binary_form.hpp",
     "src/main.cpp",
     "src/main.hpp",
+    "src/main_force.hpp",
   ],
   deps = [
     "@cpp-utils//:cpp-utils",
