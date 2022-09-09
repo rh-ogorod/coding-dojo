@@ -3,7 +3,6 @@
 #define __count_conforming_bitmasks_hpp__
 
 #include <cassert>
-#include <cmath>
 #include <cstdint>
 #include <iostream>
 
