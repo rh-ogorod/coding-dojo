@@ -2,15 +2,15 @@
 #ifndef __count_conforming_bitmasks_hpp__
 #define __count_conforming_bitmasks_hpp__
 
+#include <algorithm>
 #include <array>
 #include <bitset>
 #include <cassert>
-#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <iostream>
 #include <memory>
-#include <range/v3/algorithm/reverse.hpp>
+// #include <range/v3/algorithm/reverse.hpp>
 #include <vector>
 
 constexpr int binaryWidth = 30;
@@ -38,7 +38,11 @@ inline auto createDragon(std::array<std::uint32_t, ARITY> params)
       }
       mask <<= 1U;
     }
-    ranges::reverse(zeroLocationsPerParam.at(paramIndex));
+
+    auto& zeroLocations = zeroLocationsPerParam.at(paramIndex);
+    std::reverse(zeroLocations.begin(), zeroLocations.end());
+
+    // ranges::reverse(zeroLocationsPerParam.at(paramIndex));
 
     // std::cout << ranges::views::transform(
     //                  zeroLocationsPerParam[paramIndex],
