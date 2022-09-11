@@ -1,6 +1,6 @@
 # Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
 
-workspace(name = "diamond-dojo")
+workspace(name = "coding-dojo")
 
 local_repository(
   name = "rules-compdb",
