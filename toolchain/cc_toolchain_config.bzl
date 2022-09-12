@@ -16,12 +16,11 @@ all_link_actions = [
   ACTION_NAMES.cpp_link_nodeps_dynamic_library,
 ]
 
-
 def _impl(ctx):
   tool_paths = [
     tool_path(
       name = "gcc",
-      path = "/usr/bin/clang-14",
+      path = "/usr/bin/clang-15",
     ),
     tool_path(
       name = "ld",
@@ -76,7 +75,7 @@ def _impl(ctx):
     ctx = ctx,
     features = features,
     cxx_builtin_include_directories = [
-      "/usr/lib/llvm-14/lib/clang/14.0.6/include",
+      "/usr/lib/llvm-15/lib/clang/15.0.0/include",
       "/usr/include",
     ],
     toolchain_identifier = "k8-toolchain",
