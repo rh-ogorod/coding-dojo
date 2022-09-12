@@ -53,7 +53,7 @@ def _impl(ctx):
     ),
   ]
 
-  features = [ # NEW
+  features = [
     feature(
       name = "default_linker_flags",
       enabled = True,
