@@ -7,7 +7,7 @@ load("@rules_cc//cc:defs.bzl", "cc_toolchain_suite", "cc_toolchain")
 load(":cc_toolchain_config.bzl", "cc_toolchain_config")
 
 cc_toolchain_suite(
-  name = "clang_suite",
+  name = "clang_suite_legacy",
   toolchains = {
     "k8": ":k8_toolchain",
   },
