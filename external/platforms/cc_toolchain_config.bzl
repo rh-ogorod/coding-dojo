@@ -30,10 +30,13 @@ all_compile_actions = [
 ]
 
 def _impl(ctx):
+  [major, minor, patch] = ctx.attr.clang_version
+  version = "{}.{}.{}".format(major, minor, patch)
+
   tool_paths = [
     tool_path(
       name = "gcc",
-      path = "/usr/bin/clang-14",
+      path = "/usr/bin/clang-{}".format(major),
     ),
     tool_path(
       name = "ld",
@@ -117,23 +120,29 @@ def _impl(ctx):
     ctx = ctx,
     features = features,
     cxx_builtin_include_directories = [
-      "/usr/lib/llvm-14/lib/clang/14.0.6/include",
-      # "/usr/lib/clang/14/include",
+      "/usr/lib/llvm-14/lib/clang/{}/include".format(version),
       "/usr/include",
     ],
-    toolchain_identifier = "k8-toolchain",
+    toolchain_identifier = \
+      "x86_64-clang-{}-toolchain".format(version),
     host_system_name = "local",
     target_system_name = "local",
-    target_cpu = "k8",
+    target_cpu = "x86_64",
     target_libc = "unknown",
-    compiler = "clang",
+    compiler = "clang-{}".format(version),
     abi_version = "unknown",
     abi_libc_version = "unknown",
     tool_paths = tool_paths,
   )
 
-cc_toolchain_config = rule(
+x86_64_linux_clang_cc_toolchain_config = rule(
   implementation = _impl,
-  attrs = {},
+  attrs = {
+    "clang_version": attr.int_list(
+      # default = [14, 0, 6],
+      default = [15, 0, 0],
+      doc = "clang version: [major, minor, patch]",
+    ),
+  },
   provides = [CcToolchainConfigInfo],
 )

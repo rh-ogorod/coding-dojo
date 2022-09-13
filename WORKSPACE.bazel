@@ -3,7 +3,7 @@
 workspace(name = "coding-dojo")
 
 register_toolchains(
-  "//toolchain:platform_k8_toolchain",
+  "//external/platforms:x86_64-linux-clang_14_0_6-toolchain",
   # Target patterns are also permitted, so you could have also written:
   # "//bar_tools:all",
 )
