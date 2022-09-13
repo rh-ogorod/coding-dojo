@@ -2,6 +2,12 @@
 
 workspace(name = "coding-dojo")
 
+register_toolchains(
+  "//toolchain:platform_k8_toolchain",
+  # Target patterns are also permitted, so you could have also written:
+  # "//bar_tools:all",
+)
+
 local_repository(
   name = "rules-compdb",
   path = "external/bazelbuild-rules-compdb",
