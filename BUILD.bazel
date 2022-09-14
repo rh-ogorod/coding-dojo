@@ -5,11 +5,9 @@ load("@rules-compdb//:defs.bzl", "compilation_database")
 compilation_database(
   name = "compdb",
   targets = [
-    "//packages/binary-gap/cpp20:binary-gap-cpp20",
-    "//packages/binary-gap/cpp20:binary-gap-cpp20-perf",
-    # "//packages/binary-gap/cpp20:binary-gap-cpp20-test",
-    # "//packages/binary-gap/cpp20:binary-gap-cpp20",
-    # "//packages/binary-gap/cpp20:binary-gap-cpp20-perf",
+    "//packages/binary-gap/cpp20:main",
+    "//packages/binary-gap/cpp20:main-perf",
   ],
   module_exts = ["cpp"],
+  # toolchains = ["@bazel_tools//tools/cpp:toolchain_type"],
 )

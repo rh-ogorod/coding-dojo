@@ -19,6 +19,6 @@ CMD=(bazel)
 CMD+=("${BAZEL_RUN_CMD[@]}")
 CMD+=("${BAZEL_DEBUG_CMD[@]}")
 CMD+=("${BAZEL_TERM_CMD[@]}")
-CMD+=(//packages/binary-gap/cpp20:binary-gap-cpp20)
+CMD+=(//packages/binary-gap/cpp20:main)
 CMD+=('2>&1')
 echo + "${CMD[@]}" && eval "${CMD[@]}"

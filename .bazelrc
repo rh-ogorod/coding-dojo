@@ -9,7 +9,7 @@ build --platforms=//external/platforms:x86_64-linux-platform
 build --incompatible_enable_cc_toolchain_resolution
 
 # Show executed commands for debuggability.
-common --subcommands
+build --subcommands
 
 # Show the full set of flags for observability and debuggability.
 common --announce_rc

@@ -3,7 +3,7 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_test")
 
 cc_binary(
-  name = "binary-gap-cpp20",
+  name = "main",
   srcs = [
     "src/binary_form.hpp",
     "src/main.cpp",
@@ -20,7 +20,7 @@ cc_binary(
 )
 
 cc_test(
-  name = "binary-gap-cpp20-test",
+  name = "main-test",
   srcs = [
     "src/main.hpp",
     "src/main.test.cpp",
@@ -36,7 +36,7 @@ cc_test(
 )
 
 cc_binary(
-  name = "binary-gap-cpp20-perf",
+  name = "main-perf",
   srcs = [
     "src/binary_form.hpp",
     "src/main.hpp",

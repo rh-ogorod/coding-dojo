@@ -8,6 +8,7 @@ register_execution_platforms(
 
 register_toolchains(
   # "@local_config_cc//:all",
+  "//external/platforms:cc-toolchain-x64_linux-bazel",
   # "//external/platforms:x86_64-linux-clang_14_0_6-toolchain",
   # "//external/platforms:x86_64-linux-clang_15_0_0-toolchain",
   # "@local_config_cc//:cc-toolchain-x64_windows-clang-cl"

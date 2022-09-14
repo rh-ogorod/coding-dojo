@@ -35,7 +35,7 @@ cc_binary(
 )
 
 cc_test(
-  name = "test",
+  name = "main-test",
   srcs = [
     "src/main.hpp",
     "src/main.test.cpp",
@@ -64,23 +64,23 @@ cc_test(
   visibility = ["//visibility:public"],
 )
 
-cc_binary(
-  name = "force-test-binary",
-  srcs = [
-    "src/force.hpp",
-    "src/force.test.cpp",
-  ],
-  deps = [
-    "@cpp-utils//:cpp-utils",
-    "@range-v3//:range-v3",
-    "@boost//:boost",
-    "@system//:system",
-  ],
-  visibility = ["//visibility:public"],
-)
+# cc_binary(
+#   name = "force-test-binary",
+#   srcs = [
+#     "src/force.hpp",
+#     "src/force.test.cpp",
+#   ],
+#   deps = [
+#     "@cpp-utils//:cpp-utils",
+#     "@range-v3//:range-v3",
+#     "@boost//:boost",
+#     "@system//:system",
+#   ],
+#   visibility = ["//visibility:public"],
+# )
 
 cc_binary(
-  name = "perf",
+  name = "main-perf",
   srcs = [
     "src/binary_form.hpp",
     "src/main.hpp",
