@@ -120,7 +120,7 @@ def _impl(ctx):
     ctx = ctx,
     features = features,
     cxx_builtin_include_directories = [
-      "/usr/lib/llvm-14/lib/clang/{}/include".format(version),
+      "/usr/lib/llvm-{}/lib/clang/{}/include".format(major, version),
       "/usr/include",
     ],
     toolchain_identifier = \
