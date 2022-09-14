@@ -1,8 +1,9 @@
-# build --cxxopt='-std=c++20'
+build --cxxopt='-std=c++20'
+build --action_env=CC=gcc-11
+build --action_env=CXX=gcc-11
 
 # Use toolchain resolution to find the cc toolchain.
 build --platforms=//external/platforms:x86_64-linux-platform
-# build --platforms=@bazel_tools//tools/cpp:toolchain
 
 # Use toolchain resolution to find the cc toolchain.
 build --incompatible_enable_cc_toolchain_resolution

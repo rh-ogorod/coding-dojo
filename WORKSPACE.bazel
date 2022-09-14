@@ -2,9 +2,15 @@
 
 workspace(name = "coding-dojo")
 
+register_execution_platforms(
+  "//external/platforms:x86_64-linux-platform",
+)
+
 register_toolchains(
-  "//external/platforms:x86_64-linux-clang_15_0_0-toolchain",
+  # "@local_config_cc//:all",
   # "//external/platforms:x86_64-linux-clang_14_0_6-toolchain",
+  # "//external/platforms:x86_64-linux-clang_15_0_0-toolchain",
+  # "@local_config_cc//:cc-toolchain-x64_windows-clang-cl"
   # Target patterns are also permitted, so you could have also written:
   # "//bar_tools:all",
 )
