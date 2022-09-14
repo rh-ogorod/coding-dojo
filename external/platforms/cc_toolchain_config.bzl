@@ -139,8 +139,7 @@ x86_64_linux_clang_cc_toolchain_config = rule(
   implementation = _impl,
   attrs = {
     "clang_version": attr.int_list(
-      # default = [14, 0, 6],
-      default = [15, 0, 0],
+      mandatory = True,
       doc = "clang version: [major, minor, patch]",
     ),
   },
