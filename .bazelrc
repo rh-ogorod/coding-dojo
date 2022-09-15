@@ -1,6 +1,10 @@
-build --cxxopt='-std=c++20'
+# build --cxxopt='-std=c++20'
 build --action_env=CC=gcc-11
-build --action_env=CXX=gcc-11
+build --action_env=CXX=g++-11
+build --action_env=CPP=cpp-11
+build --action_env=BAZEL_CXXOPTS=-std=c++20
+# build --action_env=CC=clang-15
+# build --action_env=CXX=clang++-15
 
 # Use toolchain resolution to find the cc toolchain.
 build --platforms=//external/platforms:x86_64-linux-platform
