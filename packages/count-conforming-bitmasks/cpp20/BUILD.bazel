@@ -1,5 +1,7 @@
 # Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
 
+package(default_visibility = ["//visibility:public"])
+
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_test")
 
 cc_binary(
@@ -15,7 +17,6 @@ cc_binary(
     "@boost//:boost",
     "@system//:system",
   ],
-  visibility = ["//visibility:public"],
 )
 
 cc_binary(
@@ -31,7 +32,6 @@ cc_binary(
     "@boost//:boost",
     "@system//:system",
   ],
-  visibility = ["//visibility:public"],
 )
 
 cc_test(
@@ -46,7 +46,20 @@ cc_test(
     "@boost//:boost",
     "@system//:system",
   ],
-  visibility = ["//visibility:public"],
+)
+
+cc_binary(
+  name = "main-test-binary",
+  srcs = [
+    "src/main.hpp",
+    "src/main.test.cpp",
+  ],
+  deps = [
+    "@cpp-utils//:cpp-utils",
+    "@range-v3//:range-v3",
+    "@boost//:boost",
+    "@system//:system",
+  ],
 )
 
 cc_test(
@@ -61,23 +74,21 @@ cc_test(
     "@boost//:boost",
     "@system//:system",
   ],
-  visibility = ["//visibility:public"],
 )
 
-# cc_binary(
-#   name = "force-test-binary",
-#   srcs = [
-#     "src/force.hpp",
-#     "src/force.test.cpp",
-#   ],
-#   deps = [
-#     "@cpp-utils//:cpp-utils",
-#     "@range-v3//:range-v3",
-#     "@boost//:boost",
-#     "@system//:system",
-#   ],
-#   visibility = ["//visibility:public"],
-# )
+cc_binary(
+  name = "force-test-binary",
+  srcs = [
+    "src/force.hpp",
+    "src/force.test.cpp",
+  ],
+  deps = [
+    "@cpp-utils//:cpp-utils",
+    "@range-v3//:range-v3",
+    "@boost//:boost",
+    "@system//:system",
+  ],
+)
 
 cc_binary(
   name = "main-perf",
@@ -92,5 +103,4 @@ cc_binary(
     "@boost//:boost",
     "@system//:system",
   ],
-  visibility = ["//visibility:public"],
 )

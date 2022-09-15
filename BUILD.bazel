@@ -7,7 +7,11 @@ compilation_database(
   targets = [
     "//packages/binary-gap/cpp20:main",
     "//packages/binary-gap/cpp20:main-perf",
+    "//packages/binary-gap/cpp20:main-test-binary",
     "//packages/count-conforming-bitmasks/cpp20:main",
+    "//packages/count-conforming-bitmasks/cpp20:force",
+    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
+    "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
     "//packages/count-conforming-bitmasks/cpp20:main-perf",
   ],
   module_exts = ["cpp"],
