@@ -22,3 +22,7 @@
 	path = external/commands_to_compilation_database
 	url = git@github.com:tee3/commands_to_compilation_database.git
 	branch = master
+[submodule "@rh-ogorod/auto-code-main"]
+	path = auto-code/main
+	url = git@github.com:rh-ogorod/auto-code-main.git
+	branch = main

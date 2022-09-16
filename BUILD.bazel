@@ -16,3 +16,7 @@ compilation_database(
   ],
   module_exts = ["cpp"],
 )
+
+## /a/$ auto-code test-model test-template
+## /a/{
+## /a/}
