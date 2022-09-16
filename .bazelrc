@@ -22,7 +22,7 @@ common --announce_rc
 # Legacy toolchain resolution
 
 # Use our custom-configured c++ toolchain.
-build:clang_config --crosstool_top=//external/platforms:clang_suite
+build:clang_config --crosstool_top=//external/platforms:clang-suite
 
 # Use --cpu as a differentiator.
 build:clang_config --cpu=k8

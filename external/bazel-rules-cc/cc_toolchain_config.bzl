@@ -68,7 +68,6 @@ def _impl(ctx):
     ),
   ]
 
-
   default_compiler_flags = feature(
     name = "default_compiler_flags",
     enabled = True,
@@ -135,7 +134,7 @@ def _impl(ctx):
     tool_paths = tool_paths,
   )
 
-x86_64_linux_clang_cc_toolchain_config = rule(
+cc_toolchain_x86_64_linux_clang_config = rule(
   implementation = _impl,
   attrs = {
     "clang_version": attr.int_list(
