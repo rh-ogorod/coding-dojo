@@ -1,6 +1,6 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
-#ifndef __count_conforming_bitmasks_hpp__
-#define __count_conforming_bitmasks_hpp__
+#ifndef __main_hpp__
+#define __main_hpp__
 
 #include <cassert>
 #include <cstdint>
@@ -100,4 +100,4 @@ inline auto solution(int32_t A, int32_t B, int32_t C) -> int32_t {
   return aUnique + bUnique + cUnique + abUnique + bcUnique + acUnique + powAbcz;
 }
 
-#endif // __count_conforming_bitmasks_hpp__
+#endif // __main_hpp__

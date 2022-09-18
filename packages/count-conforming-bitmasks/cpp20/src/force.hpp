@@ -1,6 +1,6 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
-#ifndef __count_conforming_bitmasks_hpp__
-#define __count_conforming_bitmasks_hpp__
+#ifndef __force_hpp__
+#define __force_hpp__
 
 #include <algorithm>
 #include <array>
@@ -91,4 +91,4 @@ inline auto solution(std::uint32_t A, std::uint32_t B, std::uint32_t C)
   return dragonUPtr->count();
 }
 
-#endif // __count_conforming_bitmasks_hpp__
+#endif // __force_hpp__

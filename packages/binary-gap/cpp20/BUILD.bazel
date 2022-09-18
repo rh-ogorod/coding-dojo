@@ -7,7 +7,6 @@ load("//external/bazel-rules-cc:cc20.bzl", "cc_binary", "cc_test")
 cc_binary(
   name = "main",
   srcs = [
-    "src/binary_form.hpp",
     "src/main.cpp",
     "src/main.hpp",
   ],
@@ -51,7 +50,6 @@ cc_binary(
 cc_binary(
   name = "main-perf",
   srcs = [
-    "src/binary_form.hpp",
     "src/main.hpp",
     "src/perf.cpp",
   ],

@@ -9,7 +9,7 @@
 #include <range/v3/view.hpp>
 #include <vector>
 
-#include "binary_form.hpp"
+#include "cpp-utils/binary_form.hpp"
 #include "main.hpp"
 
 namespace views = ranges::views;

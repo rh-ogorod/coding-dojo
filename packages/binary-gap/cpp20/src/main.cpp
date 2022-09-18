@@ -6,7 +6,7 @@
 #include <climits>
 #include <iostream>
 
-#include "binary_form.hpp"
+#include "cpp-utils/binary_form.hpp"
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::cout << "Binary gap samples:\n"

@@ -10,7 +10,7 @@
 #include <iostream>
 #include <memory>
 
-#include "binary_form.hpp"
+#include "cpp-utils/binary_form.hpp"
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   uint32_t A;

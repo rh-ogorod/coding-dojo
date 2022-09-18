@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "binary_form.hpp"
+#include "cpp-utils/binary_form.hpp"
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   constexpr std::int32_t A = 0b11'1111'1111'1111'1111'1111'1001'1111;
