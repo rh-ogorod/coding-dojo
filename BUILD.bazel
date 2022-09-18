@@ -5,18 +5,25 @@ load("@rules-compdb//:defs.bzl", "compilation_database")
 compilation_database(
   name = "compdb",
   targets = [
+    ## /a/$ auto-code cc-targets-model cc-targets
+    ## /a/{
+
+    # model: auto-code/models/cc-targets-model.py
+    # template: auto-code/templates/cc-targets.mako
+
     "//packages/binary-gap/cpp20:main",
     "//packages/binary-gap/cpp20:main-perf",
     "//packages/binary-gap/cpp20:main-test-binary",
-    "//packages/count-conforming-bitmasks/cpp20:main",
     "//packages/count-conforming-bitmasks/cpp20:force",
-    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
     "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
+    "//packages/count-conforming-bitmasks/cpp20:main",
     "//packages/count-conforming-bitmasks/cpp20:main-perf",
+    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
+    "//packages/template/cpp20:force",
+    "//packages/template/cpp20:main",
+    "//packages/template/cpp20:perf",
+
+    ## /a/}
   ],
   module_exts = ["cpp"],
 )
-
-## /a/$ auto-code test-model test-template
-## /a/{
-## /a/}

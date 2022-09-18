@@ -16,3 +16,7 @@ echo + "${CMD[@]}" && "${CMD[@]}"
 echo
 CMD=(./build-binary-gap-cpp20.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
+
+echo
+CMD=(./count-conforming-bitmasks.sh)
+echo + "${CMD[@]}" && "${CMD[@]}"

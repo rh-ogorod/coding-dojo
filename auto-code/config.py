@@ -7,7 +7,10 @@ generatorsPath = Path(__file__).parent.resolve(True) / 'main'
 projectRootPath = (generatorsPath / '..' / '..').resolve(True)
 
 autoCodeDirectories = [
-  str(projectRootPath / 'packages'),
+  # str(projectRootPath / 'packages'),
+  str(projectRootPath),
 ]
 
-autoCodeFiles = r'\.xxx$'
+autoCodeFiles = '|'.join([
+  r'^BUILD.bazel$',
+])

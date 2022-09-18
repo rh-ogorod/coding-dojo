@@ -39,6 +39,7 @@ cc_binary(
     "src/main.hpp",
     "src/main.test.cpp",
   ],
+  linkstatic = 1,
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
