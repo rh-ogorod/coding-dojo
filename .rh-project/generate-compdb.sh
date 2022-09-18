@@ -23,7 +23,8 @@ CMD=(yarn)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(./build-all.sh)
+# CMD=(./build-all.sh)
+CMD=(./build-pre-bazel.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 
