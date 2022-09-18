@@ -1,0 +1,37 @@
+{
+  "name": "@coding-dojo/test0",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "lint": "eslint --ext .js,cjs . ; echo '' ; tsc",
+    "test": "mocha"
+  },
+  "bin": {
+    "perf": "src/perf",
+    "start": "src/start"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Victor Rybynok",
+  "license": "GPL-3.0",
+  "eslintConfig": {
+    "extends": "./eslint.config.cjs"
+  },
+  "devDependencies": {
+    "@rh-ogorod/js-configs": "workspace:*",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.11.45",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4"
+  }
+}

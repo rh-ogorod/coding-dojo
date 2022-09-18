@@ -5,7 +5,8 @@
     "external/bazelbuild-rules-compdb",
     "external/js-configs",
     "packages/binary-gap/nodejs",
-    "packages/count-conforming-bitmasks/nodejs"
+    "packages/count-conforming-bitmasks/nodejs",
+    "packages/test0/nodejs"
   ],
   "scripts": {
     "app:build": "yarn workspaces foreach --verbose --parallel --topological-dev run build",

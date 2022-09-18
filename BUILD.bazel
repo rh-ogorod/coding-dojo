@@ -17,6 +17,9 @@ targets = [
   "//packages/count-conforming-bitmasks/cpp20:main",
   "//packages/count-conforming-bitmasks/cpp20:main-perf",
   "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
+  "//packages/test0/cpp14:main",
+  "//packages/test0/cpp14:main-perf",
+  "//packages/test0/cpp14:main-test-binary",
 
   ## /a/}
 ]
