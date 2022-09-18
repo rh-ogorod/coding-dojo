@@ -9,6 +9,10 @@ build --action_env=BAZEL_CXXOPTS=-std=c++11
 # Use toolchain resolution to find the cc toolchain.
 # build --platforms=//external/platforms:x86_64-linux-platform
 
+# Nice terminal output
+build --color=yes
+build --curses=yes
+
 # Use toolchain resolution to find the cc toolchain.
 build --incompatible_enable_cc_toolchain_resolution
 

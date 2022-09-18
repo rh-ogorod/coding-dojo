@@ -19,11 +19,24 @@ compilation_database(
     "//packages/count-conforming-bitmasks/cpp20:main",
     "//packages/count-conforming-bitmasks/cpp20:main-perf",
     "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
-    "//packages/template/cpp20:force",
-    "//packages/template/cpp20:main",
-    "//packages/template/cpp20:perf",
 
     ## /a/}
   ],
   module_exts = ["cpp"],
+)
+
+cc_binary(
+  name = "build",
+  deps = [
+    "//packages/binary-gap/cpp20:main",
+    "//packages/binary-gap/cpp20:main-perf",
+    "//packages/binary-gap/cpp20:main-test-binary",
+    "//packages/count-conforming-bitmasks/cpp20:force",
+    "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
+    "//packages/count-conforming-bitmasks/cpp20:main",
+    "//packages/count-conforming-bitmasks/cpp20:main-perf",
+    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
+  ],
+  tags = ["manual"],
+  # data = [:compdb],
 )

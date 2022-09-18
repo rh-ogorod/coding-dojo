@@ -38,7 +38,7 @@ readonly C2CDB=$(realpath external/commands_to_compilation_database/`
 readonly COMPDB_TMPD_PATH="${PWD}/.cache/compdb"
 
 echo
-CMD=(bazel build --subcommands //:compdb '--color=yes' '--curses=yes')
+CMD=(bazel build //:compdb)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
