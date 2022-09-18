@@ -3,7 +3,7 @@
 # model: ${_meta.modelRelPath}
 # template: ${_meta.templateRelPath}
 
-% for ccTarget in ccTargets:
-"${ccTarget}",
+% for target in targets:
+"${target}",
 % endfor
 

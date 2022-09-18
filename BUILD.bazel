@@ -2,41 +2,32 @@
 
 load("@rules-compdb//:defs.bzl", "compilation_database")
 
+targets = [
+  ## /a/$ auto-code cc-all targets-list
+  ## /a/{
+
+  # model: auto-code/models/cc-all.py
+  # template: auto-code/templates/targets-list.mako
+
+  "//packages/binary-gap/cpp20:main",
+  "//packages/binary-gap/cpp20:main-perf",
+  "//packages/binary-gap/cpp20:main-test-binary",
+  "//packages/count-conforming-bitmasks/cpp20:force",
+  "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
+  "//packages/count-conforming-bitmasks/cpp20:main",
+  "//packages/count-conforming-bitmasks/cpp20:main-perf",
+  "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
+
+  ## /a/}
+]
+
 compilation_database(
   name = "compdb",
-  targets = [
-    ## /a/$ auto-code cc-targets-model cc-targets
-    ## /a/{
-
-    # model: auto-code/models/cc-targets-model.py
-    # template: auto-code/templates/cc-targets.mako
-
-    "//packages/binary-gap/cpp20:main",
-    "//packages/binary-gap/cpp20:main-perf",
-    "//packages/binary-gap/cpp20:main-test-binary",
-    "//packages/count-conforming-bitmasks/cpp20:force",
-    "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
-    "//packages/count-conforming-bitmasks/cpp20:main",
-    "//packages/count-conforming-bitmasks/cpp20:main-perf",
-    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
-
-    ## /a/}
-  ],
+  targets = targets,
   module_exts = ["cpp"],
 )
 
-cc_binary(
-  name = "build",
-  deps = [
-    "//packages/binary-gap/cpp20:main",
-    "//packages/binary-gap/cpp20:main-perf",
-    "//packages/binary-gap/cpp20:main-test-binary",
-    "//packages/count-conforming-bitmasks/cpp20:force",
-    "//packages/count-conforming-bitmasks/cpp20:force-test-binary",
-    "//packages/count-conforming-bitmasks/cpp20:main",
-    "//packages/count-conforming-bitmasks/cpp20:main-perf",
-    "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
-  ],
-  tags = ["manual"],
-  # data = [:compdb],
+filegroup(
+  name = "cc-all",
+  srcs = targets + [":compdb"]
 )

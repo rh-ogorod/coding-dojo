@@ -147,7 +147,8 @@
                           ;; '(save mode-enabled)
                           '(idle-change save mode-enabled))))
 
-          (add-hook 'before-save-hook #'clang-format-buffer nil t)
+          ;; (add-hook 'before-save-hook #'clang-format-buffer nil t)
+          (clang-format-mode 1)
           (company-mode 1)
           (lsp 1))
 

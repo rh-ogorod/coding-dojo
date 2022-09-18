@@ -26,10 +26,10 @@ if compProc.returncode != 0:
 
 bazelQueryResult = compProc.stdout.decode('utf-8').split('\n')
 
-ccTargets = [
+ccAll = [
   target for target in bazelQueryResult if target and target[:2] == '//'
 ]
 
 data = {
-  'ccTargets': ccTargets,
+  'targets': ccAll,
 }
