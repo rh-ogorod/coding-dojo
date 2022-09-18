@@ -135,6 +135,56 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@coding-dojo/test1@workspace:packages/test1/nodejs":
+  version: 0.0.0-use.local
+  resolution: "@coding-dojo/test1@workspace:packages/test1/nodejs"
+  dependencies:
+    "@rh-ogorod/js-configs": "workspace:*"
+    "@types/mocha": ^9.1.1
+    "@types/node": ^16.11.45
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    eslint: ^7.32.0
+    eslint-config-airbnb: ^19.0.4
+    eslint-import-resolver-node: ^0.3.6
+    eslint-import-resolver-typescript: ^3.3.0
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-react: ^7.30.1
+    eslint-plugin-react-hooks: ^4.6.0
+    mocha: ^10.0.0
+    typescript: ^4.7.4
+  bin:
+    perf: src/perf
+    start: src/start
+  languageName: unknown
+  linkType: soft
+
+"@coding-dojo/test2@workspace:packages/test2/nodejs":
+  version: 0.0.0-use.local
+  resolution: "@coding-dojo/test2@workspace:packages/test2/nodejs"
+  dependencies:
+    "@rh-ogorod/js-configs": "workspace:*"
+    "@types/mocha": ^9.1.1
+    "@types/node": ^16.11.45
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    eslint: ^7.32.0
+    eslint-config-airbnb: ^19.0.4
+    eslint-import-resolver-node: ^0.3.6
+    eslint-import-resolver-typescript: ^3.3.0
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-react: ^7.30.1
+    eslint-plugin-react-hooks: ^4.6.0
+    mocha: ^10.0.0
+    typescript: ^4.7.4
+  bin:
+    perf: src/perf
+    start: src/start
+  languageName: unknown
+  linkType: soft
+
 "@csstools/selector-specificity@npm:^2.0.1":
   version: 2.0.2
   resolution: "@csstools/selector-specificity@npm:2.0.2"

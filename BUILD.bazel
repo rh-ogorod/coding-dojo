@@ -20,6 +20,12 @@ targets = [
   "//packages/test0/cpp14:main",
   "//packages/test0/cpp14:main-perf",
   "//packages/test0/cpp14:main-test-binary",
+  "//packages/test1/cpp14:main",
+  "//packages/test1/cpp14:main-perf",
+  "//packages/test1/cpp14:main-test-binary",
+  "//packages/test2/cpp14:main",
+  "//packages/test2/cpp14:main-perf",
+  "//packages/test2/cpp14:main-test-binary",
 
   ## /a/}
 ]

@@ -14,9 +14,5 @@ CMD=(./build-pre-bazel.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(./build-binary-gap-cpp20.sh)
-echo + "${CMD[@]}" && "${CMD[@]}"
-
-echo
-CMD=(./count-conforming-bitmasks.sh)
+CMD=(bazel build //:cc-all)
 echo + "${CMD[@]}" && "${CMD[@]}"

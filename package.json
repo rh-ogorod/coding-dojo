@@ -6,7 +6,9 @@
     "external/js-configs",
     "packages/binary-gap/nodejs",
     "packages/count-conforming-bitmasks/nodejs",
-    "packages/test0/nodejs"
+    "packages/test0/nodejs",
+    "packages/test1/nodejs",
+    "packages/test2/nodejs"
   ],
   "scripts": {
     "app:build": "yarn workspaces foreach --verbose --parallel --topological-dev run build",

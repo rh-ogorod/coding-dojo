@@ -1,4 +1,6 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+/* global performance */
 
 import { solution } from './main.js';
 
@@ -12,7 +14,8 @@ const CYCLES_COUNT = 1_000_000;
     return Math.ceil(Math.random() * 2_147_483_647);
   });
 
-  let binaryGap;
+  /* eslint-disable-line */ // @ts-ignore
+  let binaryGap; // eslint-disable-line @typescript-eslint/no-unused-vars
   let durationAvg = 0;
 
   nums.forEach((N) => {
