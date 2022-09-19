@@ -11,7 +11,7 @@
 // #include "cpp-utils/binary_form.hpp"
 
 // NOLINTNEXTLINE(modernize-use-trailing-return-type)
-inline int32_t solution(int32_t N) {
+inline std::int32_t solution(std::int32_t N) {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
   assert(N == N);
 
