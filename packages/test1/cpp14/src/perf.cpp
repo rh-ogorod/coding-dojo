@@ -25,13 +25,13 @@ auto main(int /*argc*/, char* /*argv*/[]) -> int {
     return distribution(engine);
   });
 
-  int32_t binaryGap{0};
+  int32_t result{0};
   double durationAvgNanoSecond{0};
 
-  ranges::for_each(numsView, [&binaryGap, &durationAvgNanoSecond](int32_t num) {
+  ranges::for_each(numsView, [&result, &durationAvgNanoSecond](int32_t num) {
     const auto start = std::chrono::high_resolution_clock::now();
 
-    binaryGap = solution(num);
+    result = solution(num);
 
     const auto finish = std::chrono::high_resolution_clock::now();
     const std::chrono::duration<double, std::nano> duration = finish - start;
