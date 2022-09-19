@@ -31,12 +31,37 @@ targets = [
 ]
 
 compilation_database(
-  name = "compdb",
+  name = "bazel-compdb",
   targets = targets,
   module_exts = ["cpp"],
 )
 
 filegroup(
+  name = "cc-all-targets",
+  srcs = targets + [":bazel-compdb"]
+)
+
+genrule(
   name = "cc-all",
-  srcs = targets + [":compdb"]
+  srcs = [":cc-all-targets"],
+  outs = ["compile_commands.json"],
+  cmd = "\n".join([
+    "./$(execpath tools/compdb-unbox.sh)",
+    'EXECPATH=$$(dirname "$(execpath tools/compdb-unbox.sh)")',
+    'readonly COMPDB_DIR=$$(realpath "$$EXECPATH/..")',
+    'cp "$$COMPDB_DIR/compile_commands.json" "$(RULEDIR)"',
+  ]),
+  exec_tools = ["tools/compdb-unbox.sh"],
+  tags = ["no-sandbox"],
+  # visibility = ["//visibility:public"],
+)
+
+sh_binary(
+  name = "pre-build",
+  srcs = ["tools/pre-build.sh"],
+)
+
+sh_binary(
+  name = "auto-code",
+  srcs = ["tools/auto-code.sh"],
 )

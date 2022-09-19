@@ -13,3 +13,7 @@ cd "${SDPATH}/.rh-project"; echo cd "${PWD}"
 
 CMD=(./bootstrap.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
+
+bazel run //:pre-build
+
+bazel build //:cc-all

@@ -7,26 +7,8 @@ SDPATH="$(dirname "${BASH_SOURCE[0]}")"
 if [ ! -d "${SDPATH}" ]; then SDPATH="${PWD}"; fi
 readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 
-# shellcheck source=./conf.sh
-source "${SDPATH}/conf.sh"
-
-readonly BAZEL_WORKSPACE_PATH="${PRJ_ROOT_PATH}"
-
-# https://stackoverflow.com/questions/40260242/how-to-set-c-standard-version-when-build-with-bazel
-export CC=gcc-11
-export CXX=g++-11
-
-cd "${SDPATH}"; echo + cd "${PWD}"
-
-echo
-CMD=(yarn)
-echo + "${CMD[@]}" && "${CMD[@]}"
-
-echo
-# CMD=(./build-all.sh)
-CMD=(./build-pre-bazel.sh)
-echo + "${CMD[@]}" && "${CMD[@]}"
-
+BAZEL_WORKSPACE_PATH="${SDPATH}/.."
+readonly BAZEL_WORKSPACE_PATH="$(cd "${BAZEL_WORKSPACE_PATH}" && pwd)"
 
 cd "${BAZEL_WORKSPACE_PATH}"; echo + cd "${PWD}"
 
@@ -36,10 +18,6 @@ readonly C2CDB=$(realpath external/commands_to_compilation_database/`
   `commands_to_compilation_database_py)
 
 readonly COMPDB_TMPD_PATH="${PWD}/.cache/compdb"
-
-echo
-CMD=(bazel build //:compdb)
-echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
 CMD=(rm -frv)
@@ -53,7 +31,7 @@ echo + "${CMD[@]}" && "${CMD[@]}"
 readonly BAZ_COMPDB_PATH="${COMPDB_TMPD_PATH}/bazel-compile_commands.json"
 
 (echo
- readonly BAZ_COMPDB_PATH_0="$(realpath "bazel-bin/compile_commands.json")"
+ readonly BAZ_COMPDB_PATH_0="$(realpath "bazel-bin/bazel-compile_commands.json")"
  readonly BAZ_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/`
    `bazel-compile_commands-1.json"
  readonly BAZ_COMPDB_CONFIG_PATH="$(realpath unbox-bazel.config.js)"
@@ -113,5 +91,5 @@ CMD+=("${BAZ_COMPDB_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(cp -vf "${COMPDB_TMPD_PATH}/compile_commands.json" "${PRJ_ROOT_PATH}")
+CMD=(cp -vf "${COMPDB_TMPD_PATH}/compile_commands.json" "${BAZEL_WORKSPACE_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
