@@ -23,5 +23,16 @@ CMD=(./bootstrap.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
+cd "${PRJ_ROOT_PATH}"; echo cd "${PWD}"
+
+echo
 CMD=(yarn)
+echo + "${CMD[@]}" && "${CMD[@]}"
+
+echo
+CMD=(bazel build //:pre-build)
+echo + "${CMD[@]}" && "${CMD[@]}"
+
+echo
+CMD=(bazel build //:cc-all)
 echo + "${CMD[@]}" && "${CMD[@]}"
