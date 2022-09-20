@@ -8,6 +8,9 @@ build --action_env=CPP=cpp-11
 # build --action_env=CXX=clang++-14
 build --action_env=BAZEL_CXXOPTS=-std=c++11
 
+build --verbose_failures
+build --sandbox_debug
+
 # Use toolchain resolution to find the cc toolchain.
 # build --platforms=//external/platforms:x86_64-linux-platform
 

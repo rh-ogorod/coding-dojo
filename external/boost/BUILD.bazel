@@ -192,26 +192,51 @@ filegroup(
   srcs = glob([".rh-subproject/*", "package/**"]),
 )
 
-# run_binary(
-#   name = "build",
-#   mnemonic = "BoostBuild",
+# genrule(
+#   name = "bazel-build",
 #   srcs = [":all-srcs"],
-#   out_dirs = ["package", "dist", "build"],
-#   tool = ".rh-subproject/bazel-build.sh",
-#   env = {"RULEDIR": "$(RULEDIR)"},
-#   execution_requirements = { "exclusive": "1" },
+#   outs = ["package", "dist", "build"],
+#   cmd = "\n".join([
+#     "export RULEDIR=$(RULEDIR)",
+#     "./$(execpath .rh-subproject/bazel-build.sh)",
+#   ]),
+#   exec_tools = [".rh-subproject/bazel-build.sh"],
 #   visibility = ["//visibility:public"],
 # )
 
-genrule(
-  name = "build",
+# genrule(
+#   name = "bazel-build-copy-libs",
+#   srcs = [":bazel-build"],
+#   outs = ["lib_copy"],
+#   cmd = "\n".join([
+#     "export RULEDIR=$(RULEDIR)",
+#     "./$(execpath .rh-subproject/bazel-build-copy-libs.sh)",
+#   ]),
+#   exec_tools = [".rh-subproject/bazel-build-copy-libs.sh"],
+#   visibility = ["//visibility:public"],
+# )
+
+run_binary(
+  name = "bazel-build",
+  mnemonic = "BoostBuild",
   srcs = [":all-srcs"],
-  outs = ["package", "dist", "build"],
-  cmd = "\n".join([
-    "export RULEDIR=$(RULEDIR)",
-    "./$(execpath .rh-subproject/bazel-build.sh)",
-  ]),
-  exec_tools = [".rh-subproject/bazel-build.sh"],
+  out_dirs = ["package", "dist", "build"],
+  tool = ".rh-subproject/bazel-build.sh",
+  env = {"RULEDIR": "$(RULEDIR)"},
+  execution_requirements = { "exclusive": "1" },
+  visibility = ["//visibility:public"],
+)
+
+run_binary(
+  name = "bazel-build-copy-libs",
+  mnemonic = "BoostBuildCopyLibs",
+  srcs = [":bazel-build"],
+  # out_dirs = ["lib_copy"],
+  outs =
+    ["lib_copy/" + lib for lib in staticLibs] +
+    ["lib_copy/" + lib for lib in sharedLibs],
+  tool = ".rh-subproject/bazel-build-copy-libs.sh",
+  env = {"RULEDIR": "$(RULEDIR)"},
   visibility = ["//visibility:public"],
 )
 
@@ -219,11 +244,9 @@ cc_library(
   name = "boost",
   hdrs = glob(["package/boost/**"]),
   strip_include_prefix = "package/",
-  srcs =
-    ["dist/lib/" + lib for lib in staticLibs] +
-    ["dist/lib/" + lib for lib in sharedLibs],
+  srcs = [
+    ":bazel-build-copy-libs",
+  ],
+  data = [":bazel-build"],
   visibility = ["//visibility:public"],
 )
-
-
-# bazel build --action_env=NPROC_EXT=11 --action_env=CC=gcc-11 --action_env=CXX=g++-11 --subcommands @boost//:boost

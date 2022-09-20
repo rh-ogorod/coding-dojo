@@ -7,6 +7,9 @@ SDPATH="$(dirname "${BASH_SOURCE[0]}")"
 if [[ ! -d "${SDPATH}" ]]; then SDPATH="${PWD}"; fi
 readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 
+PATH=${PATH}
+export PATH
+
 readonly EXECPATH="$(cd "${SDPATH}/.." && pwd)"
 
 # shellcheck source=./conf.sh

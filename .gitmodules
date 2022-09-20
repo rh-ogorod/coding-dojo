@@ -26,3 +26,7 @@
 	path = auto-code/main
 	url = git@github.com:rh-ogorod/auto-code-main.git
 	branch = main
+[submodule "@aspect/bazel-lib"]
+	path = external/aspect-bazel-lib
+	url = git@github.com:aspect-build/bazel-lib.git
+	branch = main
