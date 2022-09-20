@@ -231,10 +231,10 @@ run_binary(
   name = "bazel-build-copy-libs",
   mnemonic = "BoostBuildCopyLibs",
   srcs = [":bazel-build"],
-  # out_dirs = ["lib_copy"],
-  outs =
-    ["lib_copy/" + lib for lib in staticLibs] +
-    ["lib_copy/" + lib for lib in sharedLibs],
+  out_dirs = ["boost", "lib_copy"],
+  # outs =
+  #   ["lib_copy/" + lib for lib in staticLibs] +
+  #   ["lib_copy/" + lib for lib in sharedLibs],
   tool = ".rh-subproject/bazel-build-copy-libs.sh",
   env = {"RULEDIR": "$(RULEDIR)"},
   visibility = ["//visibility:public"],
@@ -242,12 +242,10 @@ run_binary(
 
 cc_library(
   name = "boost",
-  hdrs = glob(["package/boost/**"]),
-  strip_include_prefix = "package/",
-  srcs = [
-    ":bazel-build-copy-libs",
-  ],
+  hdrs = glob(["boost/**"]),
+  # hdrs = glob(["package/boost/**"]),
+  # strip_include_prefix = "package/",
+  srcs = [":bazel-build-copy-libs"],
   linkstatic = True,
-  data = [":bazel-build"],
   visibility = ["//visibility:public"],
 )

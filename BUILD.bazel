@@ -57,11 +57,6 @@ genrule(
 )
 
 sh_binary(
-  name = "pre-build",
-  srcs = ["tools/pre-build.sh"],
-)
-
-sh_binary(
   name = "auto-code",
   srcs = ["tools/auto-code.sh"],
 )

@@ -17,5 +17,9 @@ CMD=(mkdir -p "${RULEDIR}/lib_copy")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(cp -Lf "${RULEDIR}dist/lib/*{.a,.so*}" "${RULEDIR}/lib_copy")
+CMD=(cp -Lf "${RULEDIR}/dist/lib/*{.a,.so*}" "${RULEDIR}/lib_copy")
 echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+# echo
+# CMD=(cp -Lfr "${RULEDIR}/dist/include/boost-1_80/boost" "${RULEDIR}")
+# echo + "${CMD[@]}" && "${CMD[@]}"
