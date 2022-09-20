@@ -1,5 +1,6 @@
 # Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
 
+load("@aspect_bazel_lib//lib:run_binary.bzl", "run_binary")
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 version = (1, 80, 0)
@@ -186,6 +187,34 @@ sharedLibs = (
   # "libboost_wserialization-gcc11-mt-x64-1_80.so.1.80.0",
 )
 
+filegroup(
+  name = "all-srcs",
+  srcs = glob([".rh-subproject/*", "package/**"]),
+)
+
+# run_binary(
+#   name = "build",
+#   mnemonic = "BoostBuild",
+#   srcs = [":all-srcs"],
+#   out_dirs = ["package", "dist", "build"],
+#   tool = ".rh-subproject/bazel-build.sh",
+#   env = {"RULEDIR": "$(RULEDIR)"},
+#   execution_requirements = { "exclusive": "1" },
+#   visibility = ["//visibility:public"],
+# )
+
+genrule(
+  name = "build",
+  srcs = [":all-srcs"],
+  outs = ["package", "dist", "build"],
+  cmd = "\n".join([
+    "export RULEDIR=$(RULEDIR)",
+    "./$(execpath .rh-subproject/bazel-build.sh)",
+  ]),
+  exec_tools = [".rh-subproject/bazel-build.sh"],
+  visibility = ["//visibility:public"],
+)
+
 cc_library(
   name = "boost",
   hdrs = glob(["package/boost/**"]),
@@ -195,3 +224,6 @@ cc_library(
     ["dist/lib/" + lib for lib in sharedLibs],
   visibility = ["//visibility:public"],
 )
+
+
+# bazel build --action_env=NPROC_EXT=11 --action_env=CC=gcc-11 --action_env=CXX=g++-11 --subcommands @boost//:boost
