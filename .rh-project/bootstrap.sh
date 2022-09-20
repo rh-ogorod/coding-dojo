@@ -30,7 +30,7 @@ CMD=(yarn)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(bazel build //:pre-build)
+CMD=(bazel run //:pre-build)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
