@@ -32,7 +32,7 @@ inline std::int32_t solution(std::int32_t N) {
     mask <<= 1U;
   }
 
-  std::cout << ranges::views::all(constituents);
+  std::cout << ranges::views::all(constituents) << std::endl;
 
   return N;
 }

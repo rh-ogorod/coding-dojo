@@ -5,7 +5,9 @@
 #include <iostream>
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
-  std::cout << "solution() samples:\n" << 10 << " -> " << solution(10) << "\n";
+  solution(26);
+  // std::cout << "solution() samples:\n" << 10 << " -> " <<
+  // solution(10) << "\n";
 
   return 0;
 }
