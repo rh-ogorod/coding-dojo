@@ -40,7 +40,7 @@ readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 upsearch PACKAGE_PATH '-f BUILD.bazel'
 
 if [[ -n "${PACKAGE_PATH:-}" ]]; then
-  cd "${PACKAGE_PATH}" && echo cd "${PWD}"
+  cd "${PACKAGE_PATH}" && echo + cd "${PWD}"
 fi
 
 CMD=("${BAZEL_REAL}" "$@")
