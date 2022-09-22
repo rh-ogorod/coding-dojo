@@ -3,12 +3,45 @@
 set -eu
 set -o pipefail
 
+# shameless copy'n'paste from https://unix.stackexchange.com/a/28589/115348
+upsearch () {
+  declare -n RETVAL=$1
+
+  local TEST
+  readonly TEST=$2
+
+  local UP_TO
+  readonly UP_TO=${3:-'/'}
+
+  local CURDIR
+  readonly CURDIR=$(pwd)
+
+  RETVAL=''
+
+  while [[ "$(pwd)" != "${UP_TO}" && "$(pwd)" != '/' ]]; do
+    if eval "[[ ${TEST} ]]"; then
+      RETVAL=$(pwd)
+      break
+    fi
+    cd ..
+  done
+
+  cd "${CURDIR}"
+  return 0
+}
+
 SDPATH="$(dirname "${BASH_SOURCE[0]}")"
 if [[ ! -d "${SDPATH}" ]]; then SDPATH="${PWD}"; fi
 readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 
-WORKSPACE_PATH="${SDPATH}/.."
-readonly WORKSPACE_PATH="$(cd "${WORKSPACE_PATH}" && pwd)"
+# WORKSPACE_PATH="${SDPATH}/.."
+# readonly WORKSPACE_PATH="$(cd "${WORKSPACE_PATH}" && pwd)"
+
+upsearch PACKAGE_PATH '-f BUILD.bazel'
+
+if [[ -n "${PACKAGE_PATH:-}" ]]; then
+  cd "${PACKAGE_PATH}" && echo cd "${PWD}"
+fi
 
 CMD=("${BAZEL_REAL}" "$@")
 echo + "${CMD[@]}" && "${CMD[@]}"
