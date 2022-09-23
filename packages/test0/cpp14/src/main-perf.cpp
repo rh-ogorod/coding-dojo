@@ -13,7 +13,9 @@
 
 namespace views = ranges::views;
 
-constexpr auto CYCLES_COUNT = 1'000'000;
+// constexpr auto CYCLES_COUNT = 1'000'000;
+// constexpr auto CYCLES_COUNT = 1'000;
+constexpr auto CYCLES_COUNT = 10;
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::random_device device;
