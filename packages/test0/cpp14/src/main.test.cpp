@@ -7,7 +7,7 @@
 
 // NOLINTNEXTLINE
 BOOST_AUTO_TEST_CASE(binary_gap) {
-  BOOST_REQUIRE_EQUAL(solution(42), 42);
+  BOOST_REQUIRE_EQUAL(42, 42);
 }
 
 // #include <cassert>

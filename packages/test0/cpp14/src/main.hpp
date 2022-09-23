@@ -115,6 +115,10 @@ inline std::int32_t solution(std::int32_t N) {
 
   auto sparseDecompositionParts = getSparseDecompositionParts(N);
 
+  if (sparseDecompositionParts.empty()) {
+    return -1;
+  }
+
   return *sparseDecompositionParts.begin();
 }
 
