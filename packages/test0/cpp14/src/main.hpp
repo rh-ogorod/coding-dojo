@@ -6,15 +6,9 @@
 #include <cstdint>
 #include <iostream>
 #include <limits>
-#include <range/v3/view.hpp>
 #include <set>
 #include <vector>
 
-// #include <climits>
-// #include <bitset>
-// #include "cpp-utils/binary_form.hpp"
-
-// NOLINTNEXTLINE(modernize-use-trailing-return-type)
 inline bool isSparse(std::uint32_t n) {
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
@@ -40,21 +34,20 @@ inline bool isSparse(std::uint32_t n) {
   return true;
 }
 
-struct SplitResult {
+struct DecomposeResult {
   std::uint32_t left;
   std::uint32_t right;
 };
 
-// NOLINTNEXTLINE(modernize-use-trailing-return-type)
-inline SplitResult split(
+inline DecomposeResult decompose(
     std::uint32_t n,
     const std::vector<std::uint32_t>& constituents,
     std::uint32_t selector) {
-  SplitResult result{};
+  DecomposeResult result{};
 
   std::uint32_t mask = 1;
 
-  const auto constituentsSize = constituents.size();
+  const int constituentsSize = constituents.size();
 
   for (int i = 0; i < constituentsSize; ++i) {
     const auto selectorBit = selector & mask;
@@ -71,14 +64,9 @@ inline SplitResult split(
   return result;
 }
 
-// NOLINTNEXTLINE(modernize-use-trailing-return-type)
-inline std::int32_t solution(std::int32_t N) {
-  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
-  assert(N >= 0 && N <= 1'000'000'000);
-
+inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
-  const std::uint32_t n = N;
   std::uint32_t mask = 1;
   std::vector<std::uint32_t> constituents;
 
@@ -101,15 +89,16 @@ inline std::int32_t solution(std::int32_t N) {
     mask <<= 1U;
   }
 
+  std::set<std::uint32_t> sparseParts;
+
   if (constituents.size() < 2) {
-    return -1;
+    return sparseParts;
   }
 
   const std::uint32_t maxSelector = (1U << constituents.size()) - 1;
-  std::set<std::uint32_t> sparseParts;
 
-  for (int i = 1; i < maxSelector; ++i) {
-    auto sums = split(n, constituents, i);
+  for (std::uint32_t i = 1; i < maxSelector; ++i) {
+    auto sums = decompose(n, constituents, i);
 
     if (isSparse(sums.right) && isSparse(sums.left)) {
       sparseParts.insert(sums.right);
@@ -117,10 +106,16 @@ inline std::int32_t solution(std::int32_t N) {
     }
   }
 
-  std::cout << ranges::views::all(constituents) << std::endl;
-  std::cout << ranges::views::all(sparseParts) << std::endl;
+  return sparseParts;
+}
 
-  return N;
+inline std::int32_t solution(std::int32_t N) {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
+  assert(N >= 0 && N <= 1'000'000'000);
+
+  auto sparseDecompositionParts = getSparseDecompositionParts(N);
+
+  return *sparseDecompositionParts.begin();
 }
 
 #endif // __main_hpp__
