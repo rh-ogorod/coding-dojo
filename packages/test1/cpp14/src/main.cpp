@@ -8,8 +8,5 @@
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::cout << "solution() samples:\n" << 10 << " -> " << solution(10) << "\n";
 
-  auto x = 10;
-  std::to_string(x);
-
   return 0;
 }
