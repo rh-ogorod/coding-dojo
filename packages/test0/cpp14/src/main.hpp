@@ -7,6 +7,7 @@
 #include <iostream>
 #include <limits>
 #include <range/v3/view.hpp>
+#include <set>
 #include <vector>
 
 // #include <climits>
@@ -105,14 +106,14 @@ inline std::int32_t solution(std::int32_t N) {
   }
 
   const std::uint32_t maxSelector = (1U << constituents.size()) - 1;
-  std::vector<std::uint32_t> sparseParts;
+  std::set<std::uint32_t> sparseParts;
 
   for (int i = 1; i < maxSelector; ++i) {
     auto sums = split(n, constituents, i);
 
     if (isSparse(sums.right) && isSparse(sums.left)) {
-      sparseParts.push_back(sums.right);
-      sparseParts.push_back(sums.left);
+      sparseParts.insert(sums.right);
+      sparseParts.insert(sums.left);
     }
   }
 
