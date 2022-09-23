@@ -39,6 +39,37 @@ inline bool isSparse(std::uint32_t n) {
   return true;
 }
 
+struct SplitResult {
+  std::uint32_t left;
+  std::uint32_t right;
+};
+
+// NOLINTNEXTLINE(modernize-use-trailing-return-type)
+inline SplitResult split(
+    std::uint32_t n,
+    const std::vector<std::uint32_t>& constituents,
+    std::uint32_t selector) {
+  SplitResult result{};
+
+  std::uint32_t mask = 1;
+
+  const auto constituentsSize = constituents.size();
+
+  for (int i = 0; i < constituentsSize; ++i) {
+    const auto selectorBit = selector & mask;
+
+    if (selectorBit != 0) {
+      result.right += constituents[i];
+    }
+
+    mask <<= 1U;
+  }
+
+  result.left = n - result.right;
+
+  return result;
+}
+
 // NOLINTNEXTLINE(modernize-use-trailing-return-type)
 inline std::int32_t solution(std::int32_t N) {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
@@ -69,8 +100,24 @@ inline std::int32_t solution(std::int32_t N) {
     mask <<= 1U;
   }
 
+  if (constituents.size() < 2) {
+    return -1;
+  }
+
+  const std::uint32_t maxSelector = (1U << constituents.size()) - 1;
+  std::vector<std::uint32_t> sparseParts;
+
+  for (int i = 1; i < maxSelector; ++i) {
+    auto sums = split(n, constituents, i);
+
+    if (isSparse(sums.right) && isSparse(sums.left)) {
+      sparseParts.push_back(sums.right);
+      sparseParts.push_back(sums.left);
+    }
+  }
+
   std::cout << ranges::views::all(constituents) << std::endl;
-  std::cout << isSparse(0b1001010) << std::endl;
+  std::cout << ranges::views::all(sparseParts) << std::endl;
 
   return N;
 }
