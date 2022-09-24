@@ -13,20 +13,16 @@ inline bool isSparse(std::uint32_t n) {
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
   std::uint32_t mask = 1;
+  std::uint32_t prevConstituent{};
 
   for (int i = 0; i < width; ++i) {
     const auto constituent = n & mask;
 
-    if (constituent != 0) {
-      if (i > 0) {
-        const auto prevMask = mask >> 1U;
-        const auto prevConstituent = n & prevMask;
-
-        if (prevConstituent != 0) {
-          return false;
-        }
-      }
+    if (i > 0 && constituent != 0 && prevConstituent != 0) {
+      return false;
     }
+
+    prevConstituent = constituent;
 
     mask <<= 1U;
   }
@@ -64,10 +60,16 @@ inline DecomposeResult decompose(
   return result;
 }
 
-inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
+inline std::int32_t solution(std::int32_t N) {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
+  assert(N >= 0 && N <= 1'000'000'000);
+
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
+  std::uint32_t n = N;
   std::uint32_t mask = 1;
+  std::uint32_t prevMask{};
+  std::uint32_t prevConstituent{};
   std::vector<std::uint32_t> constituents;
 
   for (int i = 0; i < width; ++i) {
@@ -76,23 +78,19 @@ inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
     if (constituent != 0) {
       constituents.push_back(constituent);
 
-      if (i > 0) {
-        const auto prevMask = mask >> 1U;
-        const auto prevConstituent = n & prevMask;
-
-        if (prevConstituent == 0) {
-          constituents.push_back(prevMask);
-        }
+      if (i > 0 && prevConstituent == 0) {
+        constituents.push_back(prevMask);
       }
     }
+
+    prevMask = mask;
+    prevConstituent = constituent;
 
     mask <<= 1U;
   }
 
-  std::set<std::uint32_t> sparseParts;
-
   if (constituents.size() < 2) {
-    return sparseParts;
+    return -1;
   }
 
   const std::uint32_t maxSelector = (1U << constituents.size()) - 1;
@@ -100,26 +98,12 @@ inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
   for (std::uint32_t i = 1; i < maxSelector; ++i) {
     auto sums = decompose(n, constituents, i);
 
-    if (isSparse(sums.right) && isSparse(sums.left)) {
-      sparseParts.insert(sums.right);
-      sparseParts.insert(sums.left);
+    if (isSparse(sums.left) && isSparse(sums.right)) {
+      return sums.left;
     }
   }
 
-  return sparseParts;
-}
-
-inline std::int32_t solution(std::int32_t N) {
-  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
-  assert(N >= 0 && N <= 1'000'000'000);
-
-  auto sparseDecompositionParts = getSparseDecompositionParts(N);
-
-  if (sparseDecompositionParts.empty()) {
-    return -1;
-  }
-
-  return *sparseDecompositionParts.begin();
+  return -1;
 }
 
 #endif // __main_hpp__

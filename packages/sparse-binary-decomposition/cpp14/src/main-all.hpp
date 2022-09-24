@@ -13,20 +13,16 @@ inline bool isSparse(std::uint32_t n) {
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
   std::uint32_t mask = 1;
+  std::uint32_t prevConstituent{};
 
   for (int i = 0; i < width; ++i) {
     const auto constituent = n & mask;
 
-    if (constituent != 0) {
-      if (i > 0) {
-        const auto prevMask = mask >> 1U;
-        const auto prevConstituent = n & prevMask;
-
-        if (prevConstituent != 0) {
-          return false;
-        }
-      }
+    if (i > 0 && constituent != 0 && prevConstituent != 0) {
+      return false;
     }
+
+    prevConstituent = constituent;
 
     mask <<= 1U;
   }
@@ -68,6 +64,8 @@ inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
 
   std::uint32_t mask = 1;
+  std::uint32_t prevMask{};
+  std::uint32_t prevConstituent{};
   std::vector<std::uint32_t> constituents;
 
   for (int i = 0; i < width; ++i) {
@@ -76,15 +74,13 @@ inline std::set<std::uint32_t> getSparseDecompositionParts(std::uint32_t n) {
     if (constituent != 0) {
       constituents.push_back(constituent);
 
-      if (i > 0) {
-        const auto prevMask = mask >> 1U;
-        const auto prevConstituent = n & prevMask;
-
-        if (prevConstituent == 0) {
-          constituents.push_back(prevMask);
-        }
+      if (i > 0 && prevConstituent == 0) {
+        constituents.push_back(prevMask);
       }
     }
+
+    prevMask = mask;
+    prevConstituent = constituent;
 
     mask <<= 1U;
   }

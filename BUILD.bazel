@@ -19,6 +19,8 @@ targets = [
   "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
   "//packages/sparse-binary-decomposition/cpp14:main",
   "//packages/sparse-binary-decomposition/cpp14:main-all",
+  "//packages/sparse-binary-decomposition/cpp14:main-all-perf",
+  "//packages/sparse-binary-decomposition/cpp14:main-all-test-binary",
   "//packages/sparse-binary-decomposition/cpp14:main-perf",
   "//packages/sparse-binary-decomposition/cpp14:main-test-binary",
   "//packages/test0/cpp14:main",

@@ -24,21 +24,7 @@ std::string toBinariesList(const T& nums, std::string sep = ",") {
 // clang-format on
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
-  auto sparseDecompositionParts = getSparseDecompositionParts(110);
-
-  std::cout << "getSparseDecompositionParts(110) -> "
-            << views::all(sparseDecompositionParts) << ":" << std::endl;
-
-  std::cout << toBinariesList(sparseDecompositionParts, "\n") << "\n"
-            << std::endl;
-
-  sparseDecompositionParts = getSparseDecompositionParts(26);
-
-  std::cout << "getSparseDecompositionParts(26) -> "
-            << views::all(sparseDecompositionParts) << ":" << std::endl;
-
-  std::cout << toBinariesList(sparseDecompositionParts, "\n") << "\n"
-            << std::endl;
+  std::cout << "solution(26) -> " << solution(26) << std::endl;
 
   std::cout << "solution(0) -> " << solution(0) << std::endl;
 
