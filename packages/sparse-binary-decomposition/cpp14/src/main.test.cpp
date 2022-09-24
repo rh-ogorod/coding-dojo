@@ -7,18 +7,13 @@
 
 // NOLINTNEXTLINE
 BOOST_AUTO_TEST_CASE(binary_gap) {
-  BOOST_REQUIRE_EQUAL(42, 42);
+  BOOST_ASSERT(
+      std::set<std::uint32_t>({5, 8, 9, 10, 16, 17, 18, 21}) ==
+      getSparseDecompositionParts(26));
+
+  BOOST_ASSERT(
+      std::set<std::uint32_t>({36, 37, 41, 42, 68, 69, 73, 74}) ==
+      getSparseDecompositionParts(110));
+
+  BOOST_ASSERT(std::set<std::uint32_t>() == getSparseDecompositionParts(0));
 }
-
-// #include <cassert>
-// #include <concepts/concepts.hpp>
-// #include <iostream>
-
-// auto main(int /*argc*/, char* /*argv*/[]) -> int {
-//   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
-//   assert(warp() == 42);
-
-//   std::cout << "Tests passed!" << std::endl;
-
-//   return 0;
-// }

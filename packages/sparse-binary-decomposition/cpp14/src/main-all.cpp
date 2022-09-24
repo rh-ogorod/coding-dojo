@@ -1,6 +1,6 @@
 // Hey Emacs, this is -*- coding: utf-8 -*-
 
-#include "main.hpp"
+#include "main-all.hpp"
 
 #include <bitset>
 #include <iostream>
