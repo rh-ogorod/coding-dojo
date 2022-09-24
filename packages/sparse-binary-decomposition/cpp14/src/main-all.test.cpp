@@ -15,5 +15,5 @@ BOOST_AUTO_TEST_CASE(binary_gap) {
       std::set<std::uint32_t>({36, 37, 41, 42, 68, 69, 73, 74}) ==
       getSparseDecompositionParts(110));
 
-  BOOST_ASSERT(std::set<std::uint32_t>() == getSparseDecompositionParts(0));
+  BOOST_ASSERT(std::set<std::uint32_t>({0}) == getSparseDecompositionParts(0));
 }

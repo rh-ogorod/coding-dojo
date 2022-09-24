@@ -24,6 +24,8 @@ std::string toBinariesList(const T& nums, std::string sep = ",") {
 // clang-format on
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
+  std::cout << "solution(1) -> " << solution(1) << std::endl;
+
   std::cout << "solution(26) -> " << solution(26) << std::endl;
 
   std::cout << "solution(0) -> " << solution(0) << std::endl;

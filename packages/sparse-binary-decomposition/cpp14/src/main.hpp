@@ -89,13 +89,9 @@ inline std::int32_t solution(std::int32_t N) {
     mask <<= 1U;
   }
 
-  if (constituents.size() < 2) {
-    return -1;
-  }
+  const std::uint32_t maxSelector = (1U << constituents.size());
 
-  const std::uint32_t maxSelector = (1U << constituents.size()) - 1;
-
-  for (std::uint32_t i = 1; i < maxSelector; ++i) {
+  for (std::uint32_t i = 0; i < maxSelector; ++i) {
     auto sums = decompose(n, constituents, i);
 
     if (isSparse(sums.left) && isSparse(sums.right)) {

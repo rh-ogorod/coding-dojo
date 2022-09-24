@@ -40,7 +40,13 @@ auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::cout << toBinariesList(sparseDecompositionParts, "\n") << "\n"
             << std::endl;
 
-  std::cout << "solution(0) -> " << solution(0) << std::endl;
+  sparseDecompositionParts = getSparseDecompositionParts(0);
+
+  std::cout << "getSparseDecompositionParts(0) -> "
+            << views::all(sparseDecompositionParts) << ":" << std::endl;
+
+  std::cout << toBinariesList(sparseDecompositionParts, "\n") << "\n"
+            << std::endl;
 
   return 0;
 }

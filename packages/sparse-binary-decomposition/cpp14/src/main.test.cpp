@@ -8,5 +8,5 @@
 // NOLINTNEXTLINE
 BOOST_AUTO_TEST_CASE(binary_gap) {
   BOOST_REQUIRE_EQUAL(18, solution(26));
-  BOOST_REQUIRE_EQUAL(-1, solution(0));
+  BOOST_REQUIRE_EQUAL(0, solution(0));
 }
