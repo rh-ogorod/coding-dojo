@@ -31,6 +31,7 @@ inline bool isSparse(std::uint32_t n) {
 }
 
 struct DecomposeResult {
+  bool areSparse;
   std::uint32_t left;
   std::uint32_t right;
 };
@@ -50,6 +51,9 @@ inline DecomposeResult decompose(
 
     if (selectorBit != 0) {
       result.right += constituents[i];
+      if (!isSparse(result.right)) {
+        return {.areSparse = false};
+      }
     }
 
     mask <<= 1U;
@@ -57,6 +61,11 @@ inline DecomposeResult decompose(
 
   result.left = n - result.right;
 
+  if (!isSparse(result.left)) {
+    return {.areSparse = false};
+  }
+
+  result.areSparse = true;
   return result;
 }
 
@@ -94,7 +103,7 @@ inline std::int32_t solution(std::int32_t N) {
   for (std::uint32_t i = 0; i < maxSelector; ++i) {
     auto sums = decompose(n, constituents, i);
 
-    if (isSparse(sums.left) && isSparse(sums.right)) {
+    if (sums.areSparse) {
       return sums.left;
     }
   }
