@@ -9,25 +9,36 @@
 #include <set>
 #include <vector>
 
+// inline bool isSparse(std::uint32_t n) {
+//   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
+
+//   std::uint32_t mask = 1;
+//   std::uint32_t prevConstituent{};
+
+//   for (int i = 0; i < width; ++i) {
+//     const auto constituent = n & mask;
+
+//     if (i > 0 && constituent != 0 && prevConstituent != 0) {
+//       return false;
+//     }
+
+//     prevConstituent = constituent;
+
+//     mask <<= 1U;
+//   }
+
+//   return true;
+// }
+
 inline bool isSparse(std::uint32_t n) {
-  constexpr int width = std::numeric_limits<std::uint32_t>::digits;
+  const auto a = n + (n << 1);
+  const auto b = a ^ (n << 1);
 
-  std::uint32_t mask = 1;
-  std::uint32_t prevConstituent{};
-
-  for (int i = 0; i < width; ++i) {
-    const auto constituent = n & mask;
-
-    if (i > 0 && constituent != 0 && prevConstituent != 0) {
-      return false;
-    }
-
-    prevConstituent = constituent;
-
-    mask <<= 1U;
+  if (n == b) {
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 struct DecomposeResult {

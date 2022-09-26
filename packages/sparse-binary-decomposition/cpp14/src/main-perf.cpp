@@ -6,6 +6,7 @@
 #include <random>
 #include <range/v3/algorithm/for_each.hpp>
 #include <range/v3/view.hpp>
+#include <ratio>
 #include <vector>
 
 #include "cpp-utils/binary_form.hpp"
@@ -15,7 +16,8 @@ namespace views = ranges::views;
 
 // constexpr auto CYCLES_COUNT = 1'000'000;
 // constexpr auto CYCLES_COUNT = 1'000;
-constexpr auto CYCLES_COUNT = 10;
+// constexpr auto CYCLES_COUNT = 10;
+constexpr auto CYCLES_COUNT = 100;
 
 auto main(int /*argc*/, char* /*argv*/[]) -> int {
   std::random_device device;
@@ -33,17 +35,20 @@ auto main(int /*argc*/, char* /*argv*/[]) -> int {
   ranges::for_each(numsView, [&result, &durationAvgNanoSecond](int32_t num) {
     const auto start = std::chrono::high_resolution_clock::now();
 
-    result = solution(num);
+    // result = solution(num);
+    result = solution(999999999);
 
     const auto finish = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double, std::nano> duration = finish - start;
+    const std::chrono::duration<double, std::milli> duration = finish - start;
     durationAvgNanoSecond += duration.count();
   });
 
   durationAvgNanoSecond /= CYCLES_COUNT;
 
   std::cout << "solution() exec duration: " << std::setprecision(4)
-            << durationAvgNanoSecond << " ns\n";
+            << durationAvgNanoSecond << " ms\n";
+
+  std::cout << "Should be no longer than 100 ms by codility test\n";
 
   return 0;
 }

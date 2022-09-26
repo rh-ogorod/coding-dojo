@@ -30,5 +30,8 @@ auto main(int /*argc*/, char* /*argv*/[]) -> int {
 
   std::cout << "solution(0) -> " << solution(0) << std::endl;
 
+  // std::cout << "solution(1000000000) -> " << solution(1000000000) <<
+  // std::endl;
+
   return 0;
 }
