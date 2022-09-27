@@ -8,27 +8,6 @@
 #include <limits>
 #include <vector>
 
-// inline bool isSparse(std::uint32_t n) {
-//   constexpr int width = std::numeric_limits<std::uint32_t>::digits;
-
-//   std::uint32_t mask = 1;
-//   std::uint32_t prevConstituent{};
-
-//   for (int i = 0; i < width; ++i) {
-//     const auto constituent = n & mask;
-
-//     if (i > 0 && constituent != 0 && prevConstituent != 0) {
-//       return false;
-//     }
-
-//     prevConstituent = constituent;
-
-//     mask <<= 1U;
-//   }
-
-//   return true;
-// }
-
 inline bool isSparse(std::uint32_t n) {
   const auto a = n + (n << 1);
   const auto b = a ^ (n << 1);
@@ -41,81 +20,51 @@ inline bool isSparse(std::uint32_t n) {
 }
 
 struct DecomposeResult {
-  bool areSparse;
   std::uint32_t left;
   std::uint32_t right;
+  bool sparse;
 };
 
-inline DecomposeResult decompose(
-    std::uint32_t n,
-    const std::vector<std::uint32_t>& constituents,
-    std::uint32_t selector) {
-  DecomposeResult result{};
+inline DecomposeResult decompose(std::int32_t N) {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
+  assert(N >= 0 && N <= 1'000'000'000);
 
+  DecomposeResult result{.sparse = false};
+
+  constexpr int width = std::numeric_limits<std::uint32_t>::digits;
+
+  std::uint32_t right = N;
+  std::uint32_t left = 0;
   std::uint32_t mask = 1;
+  int prv = 0;
 
-  const int constituentsSize = constituents.size();
+  for (int i = 0; i < width; ++i) {
+    const int cur = right & mask;
 
-  for (int i = 0; i < constituentsSize; ++i) {
-    const auto selectorBit = selector & mask;
-
-    if (selectorBit != 0) {
-      result.right += constituents[i];
-      if (!isSparse(result.right)) {
-        return {.areSparse = false};
-      }
+    if (cur != 0 && prv != 0) {
+      right &= ~mask;
+      left |= mask;
     }
 
-    mask <<= 1U;
+    prv = right & mask;
+    mask <<= 1;
   }
 
-  result.left = n - result.right;
+  result.left = left;
+  result.right = right;
 
-  if (!isSparse(result.left)) {
-    return {.areSparse = false};
+  if (isSparse(left) && isSparse(right)) {
+    result.sparse = true;
   }
 
-  result.areSparse = true;
   return result;
 }
 
 inline std::int32_t solution(std::int32_t N) {
-  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay)
-  assert(N >= 0 && N <= 1'000'000'000);
+  const auto dec = decompose(N);
 
-  constexpr int width = std::numeric_limits<std::uint32_t>::digits;
-
-  std::uint32_t n = N;
-  std::uint32_t mask = 1;
-  std::uint32_t prevMask{};
-  std::uint32_t prevConstituent{};
-  std::vector<std::uint32_t> constituents;
-
-  for (int i = 0; i < width; ++i) {
-    const auto constituent = n & mask;
-
-    if (constituent != 0) {
-      constituents.push_back(constituent);
-
-      if (i > 0 && prevConstituent == 0) {
-        constituents.push_back(prevMask);
-      }
-    }
-
-    prevMask = mask;
-    prevConstituent = constituent;
-
-    mask <<= 1U;
-  }
-
-  const std::uint32_t maxSelector = (1U << constituents.size());
-
-  for (std::uint32_t i = 0; i < maxSelector; ++i) {
-    auto sums = decompose(n, constituents, i);
-
-    if (sums.areSparse) {
-      return sums.left;
-    }
+  if (dec.sparse) {
+    return dec.right;
   }
 
   return -1;
