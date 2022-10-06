@@ -62,7 +62,7 @@ run_binary(
 
 alien_cc_library(
   name = "alien-boost",
-  dep_gen = ":bazel-build",
+  dep_gen = ":bazel-build-copy-libs",
 )
 
 cc_library(

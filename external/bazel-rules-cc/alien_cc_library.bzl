@@ -12,10 +12,13 @@ load(
 # )
 
 def _alien_cc_library_impl(ctx):
-  path = ctx.attr.dep_gen[DefaultInfo].files.to_list()[0].path
-  print('xxx', ctx.attr.dep_gen[DefaultInfo].files.to_list()[1])
+  depGenFiles = ctx.attr.dep_gen[DefaultInfo].files.to_list()
+  includes = depGenFiles[0]
+  lib = depGenFiles[1]
+  print('includesPath', includes.path)
+  print('libPath', lib.path)
   args = ctx.actions.args()
-  args.add_all([ctx.attr.dep_gen[DefaultInfo].files.to_list()[1]])
+  args.add_all([includes.path, lib.path])
 
   out = ctx.actions.declare_file(ctx.label.name)
 
@@ -23,10 +26,10 @@ def _alien_cc_library_impl(ctx):
     command="echo $@ > " + out.path,
     arguments=[args],
     outputs=[out],
-    inputs=[ctx.attr.dep_gen[DefaultInfo].files.to_list()[1]]
+    inputs=[includes, lib]
   )
 
-  print('args', args)
+  # print('args', args)
 
   # cc_toolchain = find_cpp_toolchain(ctx)
   # object_file = ctx.attr.object[MyCCompileInfo].object
@@ -51,7 +54,7 @@ def _alien_cc_library_impl(ctx):
   #   ]),
   # )
 
-  # compilation_context = cc_common.create_compilation_context()
+  compilation_context = cc_common.create_compilation_context()
 
   # linking_context = cc_common.create_linking_context(
   #   linker_inputs = depset(direct = [linker_input]),
@@ -98,12 +101,12 @@ def _alien_cc_library_impl(ctx):
   #   outputs = [output_file],
   # )
 
-  # return CcInfo(
-  #   compilation_context = compilation_context,
-  #   linking_context = linking_context
-  # )
+  return CcInfo(
+    compilation_context = compilation_context,
+    linking_context = linking_context
+  )
 
-  return [DefaultInfo(executable=out)]
+  # return [DefaultInfo(executable=out)]
 
 alien_cc_library = rule(
   implementation = _alien_cc_library_impl,
