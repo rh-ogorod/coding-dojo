@@ -2,6 +2,7 @@
 
 load("@aspect_build_bazel_lib//lib:run_binary.bzl", "run_binary")
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@bazel_rules_cc//:alien_cc_library.bzl", "alien_cc_library")
 
 version = (1, 80, 0)
 
@@ -44,6 +45,11 @@ run_binary(
   env = {"RULEDIR": "$(RULEDIR)"},
   execution_requirements = { "exclusive": "1" },
   visibility = ["//visibility:public"],
+)
+
+alien_cc_library(
+  name = "alien-boost",
+  dep_gen = ":bazel-build",
 )
 
 cc_library(

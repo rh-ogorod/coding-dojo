@@ -22,3 +22,8 @@ load(
 )
 
 aspect_bazel_lib_dependencies()
+
+local_repository(
+  name = "bazel_rules_cc",
+  path = "../bazel-rules-cc",
+)
