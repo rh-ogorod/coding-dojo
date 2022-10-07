@@ -1,5 +1,6 @@
 # Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
 
+load("@aspect_build_bazel_lib//lib:run_binary.bzl", "run_binary")
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 version = (1, 80, 0)
@@ -27,6 +28,22 @@ staticLibs = (
 sharedLibs = (
   "libboost_system-gcc11-mt-x64-1_80.so",
   "libboost_system-gcc11-mt-x64-1_80.so.1.80.0",
+)
+
+filegroup(
+  name = "all-srcs",
+  srcs = glob([".rh-subproject/*", "package/**"]),
+)
+
+run_binary(
+  name = "bazel-build",
+  mnemonic = "BoostBuild",
+  srcs = [":all-srcs"],
+  out_dirs = ["package", "dist", "build"],
+  tool = ".rh-subproject/bazel-build.sh",
+  env = {"RULEDIR": "$(RULEDIR)"},
+  execution_requirements = { "exclusive": "1" },
+  visibility = ["//visibility:public"],
 )
 
 cc_library(
