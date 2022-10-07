@@ -2,7 +2,7 @@
 
 load(
   "@bazel_tools//tools/cpp:toolchain_utils.bzl",
-  # "find_cpp_toolchain",
+  "find_cpp_toolchain",
   "use_cpp_toolchain",
 )
 
@@ -18,7 +18,8 @@ def _alien_cc_library_impl(ctx):
   print('includesPath', includes.path)
   print('libPath', lib.path)
   args = ctx.actions.args()
-  args.add_all([includes.path, lib.path])
+  # args.add_all([includes.path, lib.path])
+  args.add_all([lib.path])
 
   out = ctx.actions.declare_file(ctx.label.name)
 
@@ -31,16 +32,16 @@ def _alien_cc_library_impl(ctx):
 
   # print('args', args)
 
-  # cc_toolchain = find_cpp_toolchain(ctx)
+  cc_toolchain = find_cpp_toolchain(ctx)
   # object_file = ctx.attr.object[MyCCompileInfo].object
   # output_file = ctx.actions.declare_file(ctx.label.name + ".a")
 
-  # feature_configuration = cc_common.configure_features(
-  #   ctx = ctx,
-  #   cc_toolchain = cc_toolchain,
-  #   requested_features = ctx.features,
-  #   unsupported_features = ctx.disabled_features,
-  # )
+  feature_configuration = cc_common.configure_features(
+    ctx = ctx,
+    cc_toolchain = cc_toolchain,
+    requested_features = ctx.features,
+    unsupported_features = ctx.disabled_features,
+  )
 
   # linker_input = cc_common.create_linker_input(
   #   owner = ctx.label,
@@ -54,11 +55,25 @@ def _alien_cc_library_impl(ctx):
   #   ]),
   # )
 
-  compilation_context = cc_common.create_compilation_context()
+  linker_input = cc_common.create_linker_input(
+    owner = ctx.label,
+    libraries = depset(direct = [
+      cc_common.create_library_to_link(
+        actions = ctx.actions,
+        feature_configuration = feature_configuration,
+        cc_toolchain = cc_toolchain,
+        static_library = lib,
+      ),
+    ]),
+  )
 
-  # linking_context = cc_common.create_linking_context(
-  #   linker_inputs = depset(direct = [linker_input]),
-  # )
+  compilation_context = cc_common.create_compilation_context(
+    direct_public_headers = includes
+  )
+
+  linking_context = cc_common.create_linking_context(
+    linker_inputs = depset(direct = [linker_input]),
+  )
 
   # archiver_path = cc_common.get_tool_for_action(
   #   feature_configuration = feature_configuration,
@@ -112,10 +127,10 @@ alien_cc_library = rule(
   implementation = _alien_cc_library_impl,
   attrs = {
     "dep_gen": attr.label(mandatory = True, providers = [DefaultInfo]),
-    # "_cc_toolchain": attr.label(
-    #   default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
-    # ),
+    "_cc_toolchain": attr.label(
+      default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
+    ),
   },
-  # fragments = ["cpp"],
-  # toolchains = use_cpp_toolchain(),
+  fragments = ["cpp"],
+  toolchains = use_cpp_toolchain(),
 )
