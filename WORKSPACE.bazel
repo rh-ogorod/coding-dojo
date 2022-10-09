@@ -52,14 +52,14 @@ local_repository(
 )
 
 local_repository(
-  name = "boost-build",
+  name = "aliens-boost",
   path = "external/boost",
 )
 
 new_local_repository(
   name = "boost",
-  path = "bazel-bin/external/boost-build",
-  build_file = "boost.BUILD.bazel",
+  path = "bazel-bin/external/aliens-boost",
+  build_file = "external/boost/boost.BUILD.bazel",
 )
 
 new_local_repository(

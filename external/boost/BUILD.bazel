@@ -24,13 +24,12 @@ filegroup(
 )
 
 run_binary(
-  name = "boost-build",
+  name = "build",
   mnemonic = "BoostBuild",
   srcs = [":all-srcs"],
   out_dirs = ["package", "dist", "build"],
-  tool = ".rh-subproject/boost-build.sh",
+  tool = ".rh-subproject/aliens-boost.sh",
   env = {"RULEDIR": "$(RULEDIR)"},
-  execution_requirements = { "exclusive": "1" },
 )
 
 # cc_library(
