@@ -1,0 +1,29 @@
+# Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+  name = "boost",
+  hdrs = glob(["dist/include/boost-1_80/boost/**"]),
+  strip_include_prefix = "dist/include/boost-1_80/",
+  srcs = [
+    "dist/lib/libboost_system-gcc11-mt-x64-1_80.a",
+    "dist/lib/libboost_system-gcc11-mt-x64-1_80.so",
+    "dist/lib/libboost_system-gcc11-mt-x64-1_80.so.1.80.0",
+  ],
+)
+
+cc_library(
+  name = "boost-test",
+  hdrs = glob(["dist/include/boost-1_80/boost/**"]),
+  strip_include_prefix = "dist/include/boost-1_80/",
+  srcs = [
+    "dist/lib/libboost_prg_exec_monitor-gcc11-mt-x64-1_80.a",
+    "dist/lib/libboost_test_exec_monitor-gcc11-mt-x64-1_80.a",
+    "dist/lib/libboost_unit_test_framework-gcc11-mt-x64-1_80.a",
+    "dist/lib/libboost_prg_exec_monitor-gcc11-mt-x64-1_80.so",
+    "dist/lib/libboost_prg_exec_monitor-gcc11-mt-x64-1_80.so.1.80.0",
+    "dist/lib/libboost_unit_test_framework-gcc11-mt-x64-1_80.so",
+    "dist/lib/libboost_unit_test_framework-gcc11-mt-x64-1_80.so.1.80.0",
+  ]
+)

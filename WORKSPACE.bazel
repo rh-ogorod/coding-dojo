@@ -52,8 +52,14 @@ local_repository(
 )
 
 local_repository(
-  name = "boost",
+  name = "boost-build",
   path = "external/boost",
+)
+
+new_local_repository(
+  name = "boost",
+  path = "bazel-bin/external/boost-build",
+  build_file = "boost.BUILD.bazel",
 )
 
 new_local_repository(

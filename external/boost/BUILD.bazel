@@ -1,34 +1,22 @@
 # Hey Emacs, this is -*- coding: utf-8; mode: bazel -*-
 
+package(default_visibility = ["//visibility:public"])
+
 load("@aspect_build_bazel_lib//lib:run_binary.bzl", "run_binary")
 load("@rules_cc//cc:defs.bzl", "cc_library")
+
+load(
+  ":file_lists.bzl",
+  "staticLibsTest",
+  "sharedLibsTest",
+  "staticLibs",
+  "sharedLibs",
+)
 
 version = (1, 80, 0)
 
 versionDots = "{}.{}.{}".format(version[0], version[1], version[2])
 versionDash = "{}_{}".format(version[0], version[1])
-
-staticLibsTest = (
-  "libboost_prg_exec_monitor-gcc11-mt-x64-1_80.a",
-  "libboost_test_exec_monitor-gcc11-mt-x64-1_80.a",
-  "libboost_unit_test_framework-gcc11-mt-x64-1_80.a",
-)
-
-sharedLibsTest = (
-  "libboost_prg_exec_monitor-gcc11-mt-x64-1_80.so",
-  "libboost_prg_exec_monitor-gcc11-mt-x64-1_80.so.1.80.0",
-  "libboost_unit_test_framework-gcc11-mt-x64-1_80.so",
-  "libboost_unit_test_framework-gcc11-mt-x64-1_80.so.1.80.0",
-)
-
-staticLibs = (
-  "libboost_system-gcc11-mt-x64-1_80.a",
-)
-
-sharedLibs = (
-  "libboost_system-gcc11-mt-x64-1_80.so",
-  "libboost_system-gcc11-mt-x64-1_80.so.1.80.0",
-)
 
 filegroup(
   name = "all-srcs",
@@ -36,32 +24,32 @@ filegroup(
 )
 
 run_binary(
-  name = "bazel-build",
+  name = "boost-build",
   mnemonic = "BoostBuild",
   srcs = [":all-srcs"],
   out_dirs = ["package", "dist", "build"],
-  tool = ".rh-subproject/bazel-build.sh",
+  tool = ".rh-subproject/boost-build.sh",
   env = {"RULEDIR": "$(RULEDIR)"},
   execution_requirements = { "exclusive": "1" },
-  visibility = ["//visibility:public"],
 )
 
-cc_library(
-  name = "boost",
-  hdrs = glob(["package/boost/**"]),
-  strip_include_prefix = "package/",
-  srcs =
-    ["dist/lib/" + lib for lib in staticLibs] +
-    ["dist/lib/" + lib for lib in sharedLibs],
-  visibility = ["//visibility:public"],
-)
+# cc_library(
+#   name = "boost",
+#   hdrs = glob(["bazel-bin/external/boost/dist/include/boost-1_80/boost/**"]),
+#   # includes = ['package/boost'],
+#   # srcs = [":boost-build"],
+#   # deps = [":boost-build"],
+#   srcs =
+#     ["bazel-bin/external/boost/dist/lib/" + lib for lib in staticLibs] +
+#     ["bazel-bin/external/boost/dist/lib/" + lib for lib in sharedLibs],
+# )
 
-cc_library(
-  name = "boost-test",
-  hdrs = glob(["package/boost/**"]),
-  strip_include_prefix = "package/",
-  srcs =
-    ["dist/lib/" + lib for lib in staticLibsTest] +
-    ["dist/lib/" + lib for lib in sharedLibsTest],
-  visibility = ["//visibility:public"],
-)
+# cc_library(
+#   name = "boost-test",
+#   # hdrs = glob(["package/boost/**"]),
+#   includes = ['package/boost'],
+#   strip_include_prefix = "package/",
+#   srcs =
+#     ["dist/lib/" + lib for lib in staticLibsTest] +
+#     ["dist/lib/" + lib for lib in sharedLibsTest],
+# )
