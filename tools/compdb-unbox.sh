@@ -52,8 +52,8 @@ readonly BAZ_COMPDB_PATH="${COMPDB_TMPD_PATH}/bazel-compile_commands.json"
 readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
 
 (echo
- readonly BOOST_SRC_PATH="$(cd "external/boost/package" && pwd)"
- readonly BOOST_BUILD_LOG_0="$(realpath "external/boost/build/boost-b2.log")"
+ readonly BOOST_SRC_PATH="$(cd "bazel-bin/external/aliens-boost/package" && pwd)"
+ readonly BOOST_BUILD_LOG_0="$(realpath "bazel-bin/external/aliens-boost/build/boost-b2.log")"
  readonly BOOST_BUILD_LOG_1="${COMPDB_TMPD_PATH}/boost-b2.log"
  readonly BOOST_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/`
    `boost-compile_commands_1.json"
