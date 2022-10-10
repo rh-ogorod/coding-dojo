@@ -20,7 +20,9 @@ const config = {
       replacement: 'external/range-v3$1',
     },
     {
-      predicate: RegExp('^bazel-out/.+?/bin/external/boost/_virtual_includes/boost$'),
+      predicate: RegExp(
+        '^bazel-out/.+?/bin/external/boost/_virtual_includes/boost-headers$',
+      ),
       replacement: 'bazel-bin/external/aliens-boost/package',
     },
   ],

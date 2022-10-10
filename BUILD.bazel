@@ -17,7 +17,7 @@ targets = [
   "//packages/count-conforming-bitmasks/cpp20:main",
   "//packages/count-conforming-bitmasks/cpp20:main-perf",
   "//packages/count-conforming-bitmasks/cpp20:main-test-binary",
-  "//packages/diamond:main",
+  "//packages/diamond/cpp20:main",
   "//packages/sparse-binary-decomposition/cpp14:main",
   "//packages/sparse-binary-decomposition/cpp14:main-all",
   "//packages/sparse-binary-decomposition/cpp14:main-all-perf",
