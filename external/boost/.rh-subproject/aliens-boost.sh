@@ -24,9 +24,7 @@ CMD=("${SDPATH}/build.sh")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-# CMD=(cp -r "$EXECPATH/package" "${RULEDIR}")
-# CMD=(rsync -l "$EXECPATH/package/*" "${RULEDIR}/")
-CMD=(rsync -rl "$EXECPATH/package" "${RULEDIR}")
+CMD=(cp -r "$EXECPATH/package" "${RULEDIR}")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
