@@ -31,24 +31,3 @@ run_binary(
   tool = ".rh-subproject/aliens-boost.sh",
   env = {"RULEDIR": "$(RULEDIR)"},
 )
-
-# cc_library(
-#   name = "boost",
-#   hdrs = glob(["bazel-bin/external/boost/dist/include/boost-1_80/boost/**"]),
-#   # includes = ['package/boost'],
-#   # srcs = [":boost-build"],
-#   # deps = [":boost-build"],
-#   srcs =
-#     ["bazel-bin/external/boost/dist/lib/" + lib for lib in staticLibs] +
-#     ["bazel-bin/external/boost/dist/lib/" + lib for lib in sharedLibs],
-# )
-
-# cc_library(
-#   name = "boost-test",
-#   # hdrs = glob(["package/boost/**"]),
-#   includes = ['package/boost'],
-#   strip_include_prefix = "package/",
-#   srcs =
-#     ["dist/lib/" + lib for lib in staticLibsTest] +
-#     ["dist/lib/" + lib for lib in sharedLibsTest],
-# )
