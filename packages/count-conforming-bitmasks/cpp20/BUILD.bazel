@@ -13,7 +13,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@system//:system",
   ],
 )
@@ -27,7 +27,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@system//:system",
   ],
 )
@@ -41,7 +41,7 @@ cc_test(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@boost//:boost-test",
     "@system//:system",
   ],
@@ -57,7 +57,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@boost//:boost-test",
     "@system//:system",
   ],
@@ -72,7 +72,7 @@ cc_test(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@boost//:boost-test",
     "@system//:system",
   ],
@@ -88,7 +88,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@boost//:boost-test",
     "@system//:system",
   ],
@@ -103,7 +103,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@system//:system",
   ],
 )

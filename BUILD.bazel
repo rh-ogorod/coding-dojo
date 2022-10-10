@@ -50,7 +50,10 @@ filegroup(
 
 genrule(
   name = "cc-all",
-  srcs = [":cc-all-targets"],
+  srcs = [
+    ":cc-all-targets",
+    "unbox-bazel.config.js",
+  ],
   outs = ["compile_commands.json"],
   cmd = "\n".join([
     "./$(execpath tools/compdb-unbox.sh)",

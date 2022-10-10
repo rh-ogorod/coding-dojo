@@ -17,7 +17,7 @@ cc_binary(
   deps = [
     "@cpp-utils//:cpp-utils",
     "@range-v3//:range-v3",
-    "@boost//:boost",
+    "@boost//:boost-headers",
     "@system//:system",
   ],
   # linkopts = ['-Wl,-rpath,"$$ORIGIN/../lib"'],

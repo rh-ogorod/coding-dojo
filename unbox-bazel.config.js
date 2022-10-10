@@ -4,7 +4,16 @@
 
 /** @type {UnboxConfig} */
 const config = {
-  ignorePaths: [RegExp('external/bazel_tools$'), RegExp('external/system$')],
+  ignorePaths: [
+    RegExp('external/bazel_tools$'),
+    RegExp('external/system$'),
+    RegExp('external/cpp-utils$'),
+    RegExp('bazel-out/k8-fastbuild/bin$'),
+    RegExp('bazel-out/k8-fastbuild/bin/external/cpp-utils$'),
+    RegExp('external/range-v3$'),
+    RegExp('external/boost$'),
+    RegExp('bazel-out/k8-fastbuild/bin/external/boost$'),
+  ],
   pathReplacements: [
     {
       predicate: RegExp('^bazel-out/.+?/bin/external/range-v3(/?.*)'),
