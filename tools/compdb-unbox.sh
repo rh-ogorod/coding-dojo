@@ -31,7 +31,8 @@ echo + "${CMD[@]}" && "${CMD[@]}"
 readonly BAZ_COMPDB_PATH="${COMPDB_TMPD_PATH}/bazel-compile_commands.json"
 
 (echo
- readonly BAZ_COMPDB_PATH_0="$(realpath "bazel-bin/bazel-compile_commands.json")"
+ readonly BAZ_COMPDB_PATH_0="$(realpath "bazel-bin/`
+   `bazel-compile_commands.json")"
  readonly BAZ_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/`
    `bazel-compile_commands-1.json"
  readonly BAZ_COMPDB_CONFIG_PATH="$(realpath unbox-bazel.config.js)"
@@ -52,8 +53,10 @@ readonly BAZ_COMPDB_PATH="${COMPDB_TMPD_PATH}/bazel-compile_commands.json"
 readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
 
 (echo
- readonly BOOST_SRC_PATH="$(cd "bazel-bin/external/aliens-boost/package" && pwd)"
- readonly BOOST_BUILD_LOG_0="$(realpath "bazel-bin/external/aliens-boost/build/boost-b2.log")"
+ readonly BOOST_SRC_PATH="$(cd "bazel-bin/external/`
+   `aliens-boost/package" && pwd)"
+ readonly BOOST_BUILD_LOG_0="$(realpath "bazel-bin/external/`
+   `aliens-boost/build/boost-b2.log")"
  readonly BOOST_BUILD_LOG_1="${COMPDB_TMPD_PATH}/boost-b2.log"
  readonly BOOST_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/`
    `boost-compile_commands_1.json"
@@ -91,5 +94,7 @@ CMD+=("${BAZ_COMPDB_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
-CMD=(cp -vf "${COMPDB_TMPD_PATH}/compile_commands.json" "${BAZEL_WORKSPACE_PATH}")
+CMD=(cp -vf)
+CMD+=("${COMPDB_TMPD_PATH}/compile_commands.json")
+CMD+=("${BAZEL_WORKSPACE_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
