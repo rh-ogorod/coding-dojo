@@ -60,7 +60,6 @@ genrule(
   ]),
   exec_tools = ["tools/compdb-unbox.sh"],
   tags = ["no-sandbox"],
-  # visibility = ["//visibility:public"],
 )
 
 sh_binary(
