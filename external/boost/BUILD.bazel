@@ -5,13 +5,13 @@ package(default_visibility = ["//visibility:public"])
 load("@aspect_build_bazel_lib//lib:run_binary.bzl", "run_binary")
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-load(
-  ":file_lists.bzl",
-  "staticLibsTest",
-  "sharedLibsTest",
-  "staticLibs",
-  "sharedLibs",
-)
+# load(
+#   ":file_lists.bzl",
+#   "staticLibsTest",
+#   "sharedLibsTest",
+#   "staticLibs",
+#   "sharedLibs",
+# )
 
 version = (1, 80, 0)
 
